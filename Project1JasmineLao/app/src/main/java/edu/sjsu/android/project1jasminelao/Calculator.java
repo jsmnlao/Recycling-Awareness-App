@@ -15,7 +15,7 @@ public class Calculator {
             return P / N + T;
         }
         else{
-            double temp = Math.pow(1 + J, N);
+            double temp = Math.pow(1 + J, -N);
             return P * J / temp + T;
         }
     }

@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         //initialize binding variable
         binding = ActivityMainBinding.inflate(getLayoutInflater()); // use binding to refer to any widgets in layout file
         setContentView(binding.getRoot());
+
         binding.calBtn.setOnClickListener(this::onClick);
-//      binding.calBtn.setOnClickListener(v -> onClick(v)); // lambda expression
         binding.unBtn.setOnClickListener(this::uninstall);
         binding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @SuppressLint("DefaultLocale")
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
 
     @SuppressLint("DefaultLocale")
     private void onClick(View v){
