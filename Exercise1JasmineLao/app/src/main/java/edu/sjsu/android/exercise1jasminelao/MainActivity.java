@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Set onClickListener to the button and pass onClick method
         binding.button.setOnClickListener(this::onClick);
-        onClick(view);
     }
 
     /**
@@ -58,12 +57,12 @@ public class MainActivity extends AppCompatActivity {
             binding.textView.setText(String.valueOf(ConverterUtil.convertFahrenheitToCelsius(inputValue)));
             // Switch to the other option
             binding.radioButton.setChecked(false);
-            binding.radioButton2.setChecked(false);
+            binding.radioButton2.setChecked(true);
         }
         else{
             binding.textView.setText(String.valueOf(ConverterUtil.convertCelsiusToFahrenheit(inputValue)));
-            binding.radioButton.setChecked(false);
-            binding.radioButton2.setChecked(true);
+            binding.radioButton.setChecked(true);
+            binding.radioButton2.setChecked(false);
         }
     }
 }
