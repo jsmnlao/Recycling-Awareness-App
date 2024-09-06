@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Exercise0JasmineLao</string>
+    <style name="Base.Theme.Exercise0JasmineLao" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.Exercise0JasmineLao" parent="Base.Theme.Exercise0JasmineLao"/>
+</resources>
