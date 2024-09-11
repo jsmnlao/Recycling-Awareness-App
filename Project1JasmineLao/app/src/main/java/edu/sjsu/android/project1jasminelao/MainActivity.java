@@ -29,20 +29,11 @@ public class MainActivity extends AppCompatActivity {
         binding.unBtn.setOnClickListener(this::uninstall);
         binding.seekBar.setOnSeekBarChangeListener((SeekBarChangeAdapter) (s, i, b) ->
             binding.textView5.setText(getString(R.string.interest_rate, i/10.0)));
-
-//        EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_main); // set view of activity to layout file
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
     }
 
 
     @SuppressLint("DefaultLocale")
     private void onClick(View v){
-        System.out.println("Hi");
         String principle = binding.input.getText().toString(); // grab the input value from user
         if(!isValid(principle)){
             // TODO: toast a message
