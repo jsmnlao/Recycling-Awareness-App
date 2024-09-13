@@ -5,4 +5,5 @@
     <dimen name="_50_margin">50dp</dimen>
     <dimen name="_100_margin">100dp</dimen>
     <dimen name="_200_margin">200dp</dimen>
+    <dimen name="_300_margin">300dp</dimen>
 </resources>

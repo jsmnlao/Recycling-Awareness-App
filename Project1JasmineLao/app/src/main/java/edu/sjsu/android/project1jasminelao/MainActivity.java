@@ -1,9 +1,12 @@
 package edu.sjsu.android.project1jasminelao;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     private void onClick(View v){
         String principle = binding.input.getText().toString(); // grab the input value from user
+
         if(!isValid(principle)){
-            // TODO: toast a message
+            Toast.makeText(this,"Ensure value is not empty and has at most 2 decimal places.", Toast.LENGTH_LONG).show();
             return;
         }
         double P = Double.parseDouble(principle); // convert string to double
@@ -45,17 +49,22 @@ public class MainActivity extends AppCompatActivity {
         double T = binding.checkBox.isChecked() ? 0.1 / 100 * P : 0.0;
         double result = Calculator.calculate(P, J, N, T);
         binding.resultText.setText(getString(R.string.result, result));
-
     }
 
     /**
-     * Ensure user input is valid.
+     * Ensure user input is valid -- non-empty and 2 decimal places.
      * @param input
-     * @return
+     * @return boolean
      */
     private boolean isValid(String input){
-        // TODO: input should be non-empty and 2 decimal places
-        return true;
+        if(!input.isEmpty()){
+            if(input.indexOf('.') != -1){
+                String[] splitted = input.split("\\.");
+                return splitted[1].length() <= 2;
+            }
+            return true;
+        }
+        return false;
     }
 
     private int getMonths(){
@@ -71,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uninstall(View v){
-        // TODO: code given in instruction
+        Intent delete = new Intent(Intent.ACTION_DELETE,
+                Uri.parse("package: " + getPackageName()));
+        startActivity(delete);
     }
 }

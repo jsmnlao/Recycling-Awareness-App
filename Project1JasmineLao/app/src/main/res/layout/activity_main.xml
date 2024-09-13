@@ -32,7 +32,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/rateText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/rateText"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -52,7 +53,7 @@
         android:id="@+id/loanTerm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/_100_margin"
         android:text="@string/select_loan_term"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup2"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +63,8 @@
         android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="200dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginEnd="@dimen/_200_margin"
+        android:layout_marginBottom="@dimen/_300_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
