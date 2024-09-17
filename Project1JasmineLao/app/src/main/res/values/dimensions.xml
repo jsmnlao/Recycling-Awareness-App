@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="large_margin">30dp</dimen>
-    <dimen name="small_margin">15dp</dimen>
-    <dimen name="_50_margin">50dp</dimen>
-    <dimen name="_100_margin">100dp</dimen>
-    <dimen name="_200_margin">200dp</dimen>
-    <dimen name="_300_margin">300dp</dimen>
-</resources>
