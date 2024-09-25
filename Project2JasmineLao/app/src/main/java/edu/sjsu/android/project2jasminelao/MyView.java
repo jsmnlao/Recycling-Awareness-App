@@ -44,7 +44,6 @@ public class MyView extends View {
         // Bounds is the distance between the edge of the ball and screen
         horizontalBound = (w - BALL_SIZE) / 2f;
         verticalBound = (h - BALL_SIZE) / 2f;
-
         field = Bitmap.createScaledBitmap(field, w, h, false);
     }
 
@@ -55,10 +54,10 @@ public class MyView extends View {
         canvas.drawBitmap(field, 0, 0, null);
         // TODO: Draw the ball Bitmap object so it will originally from the origin
         //  and move based on the Particle object's mPosX/mPoxY
-        canvas.drawBitmap(ball, originX, originY, );
+        canvas.drawBitmap(ball, particle.mPosX, particle.mPosY, null);
 
         // TODO: draw name somewhere on the screen so it's easy to see (may need to paint object)
-        
+        canvas.drawText("Jasmine Lao", 10, 10, paint);
 
         // Update particle object using sensor data
         particle.updatePosition(listener.getX(), listener.getY(), listener.getTimestamp());
