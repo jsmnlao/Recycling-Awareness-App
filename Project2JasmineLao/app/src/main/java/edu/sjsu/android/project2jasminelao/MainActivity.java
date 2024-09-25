@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // TODO: set content view to a myView object (9/24)
-        view = new MyView();
-        setContentView(R.layout.activity_main);
+        view = new MyView(this); // this class is a context class
+        setContentView(view); // view object is defined in content of main activity
         /*
         • Implement onCreate
         o Initialize the SensorManager object and the Sensor object (type is accelerometer). If the
