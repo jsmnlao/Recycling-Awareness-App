@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
@@ -29,6 +30,8 @@ public class MyView extends View {
 
         // TODO: initialize the Paint object
         paint = new Paint();
+        paint.setTextSize(50);
+        paint.setColor(Color.WHITE);
     }
 
     public MyListener getListener() {
@@ -54,13 +57,16 @@ public class MyView extends View {
         canvas.drawBitmap(field, 0, 0, null);
         // TODO: Draw the ball Bitmap object so it will originally from the origin
         //  and move based on the Particle object's mPosX/mPoxY
-        canvas.drawBitmap(ball, particle.mPosX, particle.mPosY, null);
+        //  2nd argument (x-axis for top-left corner) should be a combination of originX, BALL_SIZE, and particle.mPosX
+        //  3rd argument (y-axis for top-left corner) should be a combination of originY, BALL_SIZE, and particle.mPosY.
+        canvas.drawBitmap(ball, originX + particle.mPosX - BALL_SIZE, originY - particle.mPosY - BALL_SIZE, null);
 
         // TODO: draw name somewhere on the screen so it's easy to see (may need to paint object)
-        canvas.drawText("Jasmine Lao", 10, 10, paint);
+        canvas.drawText("Jasmine Lao", 150, 200, paint);
 
         // Update particle object using sensor data
         particle.updatePosition(listener.getX(), listener.getY(), listener.getTimestamp());
         particle.resolveCollisionWithBounds(horizontalBound, verticalBound);
+        invalidate();
     }
 }

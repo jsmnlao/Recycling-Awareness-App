@@ -24,10 +24,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        manager = (SensorManager) getSystemService(Context.SEARCH_SERVICE);
+        manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         // If accelerator does not exist, toast message and stop the method
-        if(sensor != null){
+        if(sensor == null){
             Toast.makeText(this, "No sensor found", Toast.LENGTH_LONG).show();
             return;
         }
