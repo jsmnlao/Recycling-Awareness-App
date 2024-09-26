@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 
 public class MyView extends View {
     private MyListener listener;
-    private final int BALL_SIZE = 100;
+    private final int BALL_SIZE = 300;
     private Bitmap field, ball;
     private float originX, originY, horizontalBound, verticalBound;
     private Particle particle;
@@ -55,13 +55,7 @@ public class MyView extends View {
         super.onDraw(canvas);
         // Draw the field Bitmap object so that it occupies the whole screen
         canvas.drawBitmap(field, 0, 0, null);
-        // TODO: Draw the ball Bitmap object so it will originally from the origin
-        //  and move based on the Particle object's mPosX/mPoxY
-        //  2nd argument (x-axis for top-left corner) should be a combination of originX, BALL_SIZE, and particle.mPosX
-        //  3rd argument (y-axis for top-left corner) should be a combination of originY, BALL_SIZE, and particle.mPosY.
-        canvas.drawBitmap(ball, originX + particle.mPosX - BALL_SIZE, originY - particle.mPosY - BALL_SIZE, null);
-
-        // TODO: draw name somewhere on the screen so it's easy to see (may need to paint object)
+        canvas.drawBitmap(ball, originX + particle.mPosX - (BALL_SIZE / 2f), originY - particle.mPosY - (BALL_SIZE / 2f), null);
         canvas.drawText("Jasmine Lao", 150, 200, paint);
 
         // Update particle object using sensor data
