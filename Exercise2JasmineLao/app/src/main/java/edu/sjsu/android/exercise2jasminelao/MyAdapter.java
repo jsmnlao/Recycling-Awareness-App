@@ -32,10 +32,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
+    /**
+     * Displays the view holder's layout (UI) using the corresponding data at the specified position
+     * When called, the ViewHolder is bound to specific data
+     * Set data under this method
+     */
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        // Set the image as the launcher icon of Android
+        holder.binding.icon.setImageResource(R.mipmap.ic_launcher);
+        // Get current data from arraylist based on the position
+        String current = mValues.get(position);
+        holder.binding.content.setText(current);
+
+//        holder.mItem = mValues.get(position);
+//        holder.mIdView.setText(mValues.get(position).id);
+//        holder.mContentView.setText(mValues.get(position).content);
     }
 
     @Override
@@ -56,13 +67,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             this.binding.getRoot().setOnClickListener(view ->
                     Toast.makeText(view.getContext(), "A row clicked",
                             Toast.LENGTH_SHORT).show());
-//            mIdView = binding.itemNumber;
-//            mContentView = binding.content;
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
         }
     }
 }
