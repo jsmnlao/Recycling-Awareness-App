@@ -29,10 +29,10 @@ public class ListFragment extends Fragment {
         super.onCreate(savedInstanceState);
         animeList = new ArrayList<>();
         animeList.add(new Anime(R.drawable.anime1, "name 1", "description 1"));
-        animeList.add(new Anime(R.drawable.anime1, "name 2", "description 2"));
-        animeList.add(new Anime(R.drawable.anime1, "name 3", "description 3"));
-        animeList.add(new Anime(R.drawable.anime1, "name 4", "description 4"));
-        animeList.add(new Anime(R.drawable.anime1, "name 5", "description 5"));
+        animeList.add(new Anime(R.drawable.anime2, "name 2", "description 2"));
+        animeList.add(new Anime(R.drawable.anime3, "name 3", "description 3"));
+        animeList.add(new Anime(R.drawable.anime4, "name 4", "description 4"));
+        animeList.add(new Anime(R.drawable.anime5, "name 5", "description 5"));
     }
 
     @Override
