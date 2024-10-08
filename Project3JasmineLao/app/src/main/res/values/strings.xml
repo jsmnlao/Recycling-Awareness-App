@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Directory</string>
+    <string name="argument_key">my_anime</string>
+    <string name="icon">icon</string>
+    <string name="information">Information</string>
+    <string name="uninstall">Uninstall</string>
+    <string name="a1_name">Anime 1</string>
+    <string name="a2_name">Anime 2</string>
+    <string name="a3_name">Anime 3</string>
+    <string name="a4_name">Anime 4</string>
+    <string name="a5_name">Anime 5</string>
+    <string name="a1_des">Anime Desc 1</string>
+    <string name="a2_des">Anime Desc 2</string>
+    <string name="a3_des">Anime Desc 3</string>
+    <string name="a4_des">Anime Desc 4</string>
+    <string name="a5_des">Anime Desc 5</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
