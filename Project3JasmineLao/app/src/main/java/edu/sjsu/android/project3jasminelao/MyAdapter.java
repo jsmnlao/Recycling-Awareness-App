@@ -34,13 +34,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-//        holder.mItem = mValues.get(position);
-//        holder.mIdView.setText(mValues.get(position).id);
-//        holder.mContentView.setText(mValues.get(position).content);
         Anime anime = animeList.get(position); //mValues is arraylist, position is index, returns obj from list
         holder.iconView.setImageResource(anime.getImageID());
         holder.nameView.setText(anime.getName());
-
     }
 
     @Override

@@ -66,7 +66,6 @@ public class ListFragment extends Fragment {
 
 
     public void goDetail(int position){
-        // TODO: implement navigation
         Anime anime = animeList.get(position); // array list method -- get anime obj from position
         Bundle bundle = new Bundle();
 
