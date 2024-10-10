@@ -5,10 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class MainFragment extends Fragment {
@@ -29,9 +32,20 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
-        
+        // inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        // set result TextView to the received data
+        ((TextView) view.findViewById(R.id.result)).setText(data);
+
+        // initialize the NavController
+        NavController controller = NavHostFragment.findNavController(this);
+        // when "get text" button is clicked, navigate to textFragment
+        view.findViewById(R.id.get).setOnClickListener(v ->
+                controller.navigate(R.id.action_mainFragment_to_textFragment));
+        // when "web browser" button is clicked, call onClick
+        view.findViewById(R.id.implicit).setOnClickListener(this::onClick);
+        return view;
+
     }
 
     public void onClick(View view){
