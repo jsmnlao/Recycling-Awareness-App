@@ -1,5 +1,5 @@
 package edu.sjsu.android.project3jasminelao;
 
-public interface OnAnimeClickedListener {
+public interface OnCoffeeClickedListener {
     void onClick(int position);
 }

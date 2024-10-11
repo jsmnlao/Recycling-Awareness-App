@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import edu.sjsu.android.project3jasminelao.databinding.FragmentDetailBinding;
 
 public class DetailFragment extends Fragment {
-    private Anime anime = new Anime(R.drawable.anime1, R.string.a1_name, R.string.a1_des); //placeholder to see if code works
+    private Coffee coffee = new Coffee(R.drawable.coffee1, R.string.a1_name, R.string.a1_des); //placeholder to see if code works
 
     public DetailFragment() {
     }
@@ -23,9 +23,7 @@ public class DetailFragment extends Fragment {
         Bundle argument = getArguments();
         if (argument != null) {
             String key = getString(R.string.argument_key);
-            anime = argument.getParcelable(key);
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
+            coffee = argument.getParcelable(key);
         }
     }
 
@@ -34,9 +32,9 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         FragmentDetailBinding binding = FragmentDetailBinding.inflate(inflater);
-        binding.image.setImageResource(anime.getImageID());
-        binding.name.setText(anime.getName());
-        binding.detail.setText(anime.getDescription());
+        binding.image.setImageResource(coffee.getImageID());
+        binding.name.setText(coffee.getName());
+        binding.detail.setText(coffee.getDescription());
         binding.detail.setMovementMethod(new ScrollingMovementMethod());
         return binding.getRoot();
     }

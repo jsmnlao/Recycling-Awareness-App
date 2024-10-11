@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="@string/argument_key"
-            app:argType="edu.sjsu.android.project3jasminelao.Anime" />
+            app:argType="edu.sjsu.android.project3jasminelao.Coffee" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"

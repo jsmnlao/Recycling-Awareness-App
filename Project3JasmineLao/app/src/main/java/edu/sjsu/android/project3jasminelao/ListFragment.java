@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class ListFragment extends Fragment {
 
-    private ArrayList<Anime> animeList;
+    private ArrayList<Coffee> coffeeList;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -29,12 +29,12 @@ public class ListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        animeList = new ArrayList<>();
-        animeList.add(new Anime(R.drawable.anime1, R.string.a1_name, R.string.a1_des));
-        animeList.add(new Anime(R.drawable.anime2, R.string.a2_name, R.string.a2_des));
-        animeList.add(new Anime(R.drawable.anime3, R.string.a3_name, R.string.a3_des));
-        animeList.add(new Anime(R.drawable.anime4, R.string.a4_name, R.string.a4_des));
-        animeList.add(new Anime(R.drawable.anime5, R.string.a5_name, R.string.a5_des));
+        coffeeList = new ArrayList<>();
+        coffeeList.add(new Coffee(R.drawable.coffee1, R.string.a1_name, R.string.a1_des));
+        coffeeList.add(new Coffee(R.drawable.coffee2, R.string.a2_name, R.string.a2_des));
+        coffeeList.add(new Coffee(R.drawable.coffee3, R.string.a3_name, R.string.a3_des));
+        coffeeList.add(new Coffee(R.drawable.coffee4, R.string.a4_name, R.string.a4_des));
+        coffeeList.add(new Coffee(R.drawable.coffee5, R.string.a5_name, R.string.a5_des));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class ListFragment extends Fragment {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            MyAdapter adapter = new MyAdapter(animeList); // adapter constructed with animeList
+            MyAdapter adapter = new MyAdapter(coffeeList); // adapter constructed with animeList
             adapter.setListener(this::onClick); // onclick method through interface
             recyclerView.setAdapter(adapter);
         }
@@ -55,7 +55,7 @@ public class ListFragment extends Fragment {
     }
 
     public void onClick(int position){
-        if(position == animeList.size() - 1){ // if position is last one
+        if(position == coffeeList.size() - 1){ // if position is last one
             showWarning(position);
         }
         else{
@@ -66,10 +66,10 @@ public class ListFragment extends Fragment {
 
 
     public void goDetail(int position){
-        Anime anime = animeList.get(position); // array list method -- get anime obj from position
+        Coffee coffee = coffeeList.get(position); // array list method -- get coffee obj from position
         Bundle bundle = new Bundle();
 
-        bundle.putParcelable(requireContext().getString(R.string.argument_key), anime); // calling anime to bundle obj --> mapping terminologies
+        bundle.putParcelable(requireContext().getString(R.string.argument_key), coffee); // calling coffee to bundle obj --> mapping terminologies
         NavController controller = NavHostFragment.findNavController(this); // this = this fragment
         controller.navigate(R.id.list_to_detail, bundle); // id of the action wrapped with bundle
 

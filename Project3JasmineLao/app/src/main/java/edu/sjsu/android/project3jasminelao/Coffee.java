@@ -5,33 +5,33 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-public class Anime implements Parcelable {
+public class Coffee implements Parcelable {
     private final int imageID;
     private final int name, description;
 
     // alt + insert for faster setup
 
-    public Anime(int imageID, int name, int description) {
+    public Coffee(int imageID, int name, int description) {
         this.imageID = imageID;
         this.name = name;
         this.description = description;
     }
 
-    protected Anime(Parcel in) {
+    protected Coffee(Parcel in) {
         imageID = in.readInt();
         name = in.readInt();
         description = in.readInt();
     }
 
-    public static final Creator<Anime> CREATOR = new Creator<Anime>() {
+    public static final Creator<Coffee> CREATOR = new Creator<Coffee>() {
         @Override
-        public Anime createFromParcel(Parcel in) {
-            return new Anime(in);
+        public Coffee createFromParcel(Parcel in) {
+            return new Coffee(in);
         }
 
         @Override
-        public Anime[] newArray(int size) {
-            return new Anime[size];
+        public Coffee[] newArray(int size) {
+            return new Coffee[size];
         }
     };
 

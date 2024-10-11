@@ -13,14 +13,14 @@ import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private final List<Anime> animeList;
-    private OnAnimeClickedListener listener;
+    private final List<Coffee> coffeeList;
+    private OnCoffeeClickedListener listener;
 
-    public MyAdapter(List<Anime> animeList) {
-        this.animeList = animeList;
+    public MyAdapter(List<Coffee> animeList) {
+        this.coffeeList = animeList;
     }
 
-    public void setListener(OnAnimeClickedListener listener) {
+    public void setListener(OnCoffeeClickedListener listener) {
         this.listener = listener;
     }
 
@@ -34,21 +34,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Anime anime = animeList.get(position); //mValues is arraylist, position is index, returns obj from list
-        holder.iconView.setImageResource(anime.getImageID());
-        holder.nameView.setText(anime.getName());
+        Coffee coffee = coffeeList.get(position); //mValues is arraylist, position is index, returns obj from list
+        holder.iconView.setImageResource(coffee.getImageID());
+        holder.nameView.setText(coffee.getName());
     }
 
     @Override
     public int getItemCount() {
-        return animeList.size();
+        return coffeeList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final ImageView iconView;
         public final TextView nameView;
 
-        public ViewHolder(RowLayoutBinding binding, OnAnimeClickedListener listener) {
+        public ViewHolder(RowLayoutBinding binding, OnCoffeeClickedListener listener) {
             super(binding.getRoot());
             this.iconView = binding.icon;
             this.nameView = binding.name;

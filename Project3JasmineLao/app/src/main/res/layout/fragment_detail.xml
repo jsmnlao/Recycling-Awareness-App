@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="258dp"
         android:layout_margin="16dp"
-        android:src="@drawable/anime1" />
+        android:src="@drawable/coffee1" />
 
     <TextView
         android:id="@+id/name"
