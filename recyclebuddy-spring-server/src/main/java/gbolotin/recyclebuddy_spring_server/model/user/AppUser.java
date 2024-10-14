@@ -1,18 +1,16 @@
 package gbolotin.recyclebuddy_spring_server.model.user;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class AppUser
 {
     @Id
     private String username;
-    private Date registration;
+    private LocalDateTime registration;
 
     public String getUsername()
     {
@@ -24,12 +22,12 @@ public class AppUser
         this.username = username;
     }
 
-    public Date getRegistration()
+    public LocalDateTime getRegistration()
     {
         return registration;
     }
 
-    public void setRegistration(Date registration)
+    public void setRegistration(LocalDateTime registration)
     {
         this.registration = registration;
     }
