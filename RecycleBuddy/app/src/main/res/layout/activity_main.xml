@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<<<<<<< HEAD
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -17,7 +16,7 @@
         app:navGraph="@navigation/navigation"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp" />
-=======
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -62,7 +61,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recycle_buddy"
         app:layout_constraintVertical_bias="0.793" />
->>>>>>> 255689d51e27e8aae46d1757f3566e6b4893339b
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
