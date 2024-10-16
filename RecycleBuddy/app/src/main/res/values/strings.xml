@@ -5,7 +5,11 @@
     <string name="recyclingbuddy_tree_icon">RecyclingBuddy Tree Icon</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<<<<<<< HEAD
     <string name="signup_title">Sign Up</string>
     <string name="login">Login</string>
     <string name="name">Name</string>
+=======
+    <string name="signup">SignUp</string>
+>>>>>>> 255689d51e27e8aae46d1757f3566e6b4893339b
 </resources>
