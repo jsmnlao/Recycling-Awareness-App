@@ -27,5 +27,14 @@
         android:id="@+id/loginFragment"
         android:name="edu.sjsu.android.recyclebuddy.ui.login.LoginFragment"
         android:label="fragment_login_final"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homepageFragment"
+        android:name="edu.sjsu.android.recyclebuddy.HomepageFragment"
+        android:label="fragment_homepage"
+        tools:layout="@layout/fragment_homepage" />
 </navigation>

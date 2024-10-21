@@ -18,4 +18,8 @@
     <string name="login_failed">"Login failed"</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="community">Community</string>
+    <string name="scan_here">Scan Here</string>
+    <string name="info_hub">Info Hub</string>
 </resources>
