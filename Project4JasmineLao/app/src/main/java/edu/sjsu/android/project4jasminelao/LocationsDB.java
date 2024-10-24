@@ -45,12 +45,13 @@ public class LocationsDB extends SQLiteOpenHelper {
         return database.insert(TABLE_NAME, null, contentValues);
     }
 
-    public Cursor getAllStudents(String orderBy) { //cursor reads data table row by row
+    public Cursor getAllLocations() { //cursor reads data table row by row
         SQLiteDatabase database = getWritableDatabase();
         return database.query(TABLE_NAME, // which table you want to query from
                 new String[]{ID, LAT, LONG, ZOOM}, // columns you want to query
                 null, null, null, null, null); // want everything, no selection/argument
     }
+
 
     public int deleteAllAllocations(){
         SQLiteDatabase database = getWritableDatabase();
