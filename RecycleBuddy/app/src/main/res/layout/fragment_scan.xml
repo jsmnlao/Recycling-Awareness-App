@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomepageFragment">
+    tools:context=".ScanFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is homepage fragment"
-        android:textSize="25dp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:text="This is scanning fragment"
+        android:textSize="25dp" />
 
 </FrameLayout>

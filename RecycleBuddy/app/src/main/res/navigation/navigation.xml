@@ -34,7 +34,22 @@
     </fragment>
     <fragment
         android:id="@+id/homepageFragment"
-        android:name="edu.sjsu.android.recyclebuddy.HomepageFragment"
+        android:name="edu.sjsu.android.recyclebuddy.StartNavFragment"
         android:label="fragment_homepage"
-        tools:layout="@layout/fragment_homepage" />
+        tools:layout="@layout/fragment_startnav" />
+    <fragment
+        android:id="@+id/communityFragment"
+        android:name="edu.sjsu.android.recyclebuddy.CommunityFragment"
+        android:label="fragment_community"
+        tools:layout="@layout/fragment_community" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="edu.sjsu.android.recyclebuddy.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="edu.sjsu.android.recyclebuddy.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" />
 </navigation>
