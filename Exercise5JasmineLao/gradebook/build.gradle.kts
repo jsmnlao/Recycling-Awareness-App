@@ -3,21 +3,21 @@ plugins {
 }
 
 android {
-    namespace = "edu.sjsu.android.exercise5jasminelao"
+    namespace = "edu.sjsu.android.gradebook"
     compileSdk = 34
 
-    buildFeatures{
-        viewBinding = true
-    }
-
     defaultConfig {
-        applicationId = "edu.sjsu.android.exercise5jasminelao"
+        applicationId = "edu.sjsu.android.gradebook"
         minSdk = 25
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures{
+        viewBinding = true
     }
 
     buildTypes {

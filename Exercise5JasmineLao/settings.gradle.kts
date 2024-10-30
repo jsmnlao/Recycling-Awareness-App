@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "Exercise5JasmineLao"
 include(":app")
 include(":dataprovider")
+include(":gradebook")
