@@ -6,14 +6,16 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class InfoTopic implements Parcelable {
-    private final String name;
+    private final int name, description;
 
-    public InfoTopic(String name) {
+    public InfoTopic(int name, int description) {
         this.name = name;
+        this.description = description;
     }
 
     protected InfoTopic(Parcel in) {
-        name = in.readString();
+        name = in.readInt();
+        description = in.readInt();
     }
 
     public static final Creator<InfoTopic> CREATOR = new Creator<InfoTopic>() {
@@ -28,7 +30,7 @@ public class InfoTopic implements Parcelable {
         }
     };
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
@@ -39,6 +41,7 @@ public class InfoTopic implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
-        dest.writeString(name);
+        dest.writeInt(name);
+        dest.writeInt(description);
     }
 }

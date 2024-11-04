@@ -33,12 +33,11 @@ public class InfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         infoTopicList = new ArrayList<>();
-        infoTopicList.add(new InfoTopic("Recyclable Material Types"));
-        infoTopicList.add(new InfoTopic("Triangle Recycle Codes"));
-        infoTopicList.add(new InfoTopic("Environmental Impacts"));
-        infoTopicList.add(new InfoTopic("Recycling Facts"));
-        infoTopicList.add(new InfoTopic("The Recycling Process"));
-        infoTopicList.add(new InfoTopic("Recycling Centers"));
+        infoTopicList.add(new InfoTopic(R.string.topic1_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic2_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic3_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic4_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic5_name, R.string.topic1_description));
     }
 
     @Override
@@ -58,12 +57,12 @@ public class InfoFragment extends Fragment {
 //        goDetail(position);
     }
 
-//    public void goDetail(int position){
-//        InfoTopic infoTopic = infoTopicList.get(position);
-//        Bundle bundle = new Bundle();
-//
+    public void goDetail(int position){
+        InfoTopic infoTopic = infoTopicList.get(position);
+        Bundle bundle = new Bundle();
+
 //        bundle.putParcelable(requireContext().getString(R.string.argument_key), infoTopic); // calling coffee to bundle obj --> mapping terminologies
 //        NavController controller = NavHostFragment.findNavController(this); // this = this fragment
 //        controller.navigate(R.id.list_to_detail, bundle); // id of the action wrapped with bundle
-//    }
+    }
 }
