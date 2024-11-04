@@ -1,6 +1,7 @@
 package edu.sjsu.android.recyclebuddy;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -26,12 +27,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @NonNull
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        RowLayoutBinding binding = RowLayoutBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new ViewHolder(binding, listener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
-
+        InfoTopic topic = infoTopicList.get(position); //mValues is arraylist, position is index, returns obj from list
+        holder.nameView.setText(topic.getName());
     }
 
     @Override
