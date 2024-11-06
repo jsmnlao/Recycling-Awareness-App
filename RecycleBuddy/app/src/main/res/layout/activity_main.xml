@@ -7,15 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:id="@+id/bottom_navigation"-->
+<!--        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:defaultNavHost="true"-->
+<!--        app:navGraph="@navigation/navigation"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="1dp" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="Testing text: I am from activity_main"-->
+<!--        />-->
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:navGraph="@navigation/navigation" />
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottom_navigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:menu="@menu/bottom_menu" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

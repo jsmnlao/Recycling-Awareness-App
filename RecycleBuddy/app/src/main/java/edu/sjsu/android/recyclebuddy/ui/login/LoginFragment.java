@@ -130,7 +130,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void onClick(View v) {
-        Log.i("custom login frag", "clicked recyclebuddy/loginfragment");
+        Log.d("test", "clicked login/loginfragment with validation");
 
         NavController navController = Navigation.findNavController(v);
         navController.navigate(R.id.action_loginFragment_to_homepageFragment);

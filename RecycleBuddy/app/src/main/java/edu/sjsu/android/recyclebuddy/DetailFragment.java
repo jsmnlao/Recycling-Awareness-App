@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import edu.sjsu.android.recyclebuddy.databinding.FragmentDetailBinding;
 
@@ -29,8 +30,9 @@ public class DetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         Bundle argument = getArguments();
         if(argument != null){
-            String key = getString(R.string.argument_key);
-            infoTopic = argument.getParcelable(key);
+            infoTopic = getArguments().getParcelable("argument_key");
+//            String key = getString(R.string.argument_key);
+//            infoTopic = argument.getParcelable(key);
         }
     }
 
@@ -39,9 +41,21 @@ public class DetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_detail, container, false);
-        FragmentDetailBinding binding = FragmentDetailBinding.inflate(inflater);
-        binding.name.setText(infoTopic.getName());
-        return binding.getRoot();
+//        FragmentDetailBinding binding = FragmentDetailBinding.inflate(inflater);
+//        binding.name.setText(infoTopic.getName());
+//        binding.description.setText(infoTopic.getDescription());
+//        return binding.getRoot();
+        View view = inflater.inflate(R.layout.fragment_detail, container, false);
+
+        // Use infoTopic to set up your views in detail fragment
+        if (infoTopic != null) {
+            TextView titleTextView = view.findViewById(R.id.name);
+            TextView descriptionTextView = view.findViewById(R.id.description);
+
+            titleTextView.setText(getString(infoTopic.getName()));
+            descriptionTextView.setText(getString(infoTopic.getDescription()));
+        }
+        return view;
     }
 
 }

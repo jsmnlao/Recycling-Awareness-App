@@ -14,7 +14,7 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/detail"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="26sp"

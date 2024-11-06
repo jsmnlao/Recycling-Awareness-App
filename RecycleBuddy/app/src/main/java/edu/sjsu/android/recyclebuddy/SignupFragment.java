@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,8 @@ public class SignupFragment extends Fragment {
     }
 
     public void onClick(View v) {
+        Log.d("test", "clicked recyclebuddy/signUpFragment");
         NavController navController = Navigation.findNavController(v);
-        navController.navigate(R.id.action_signupFragment_to_loginFragmentFinal);
+        navController.navigate(R.id.action_signupFragment_to_loginFragment);
     }
 }

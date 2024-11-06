@@ -49,12 +49,13 @@ public class InfoFragment extends Fragment {
 
         // set the adapter
         MyAdapter adapter = new MyAdapter(infoTopicList);
+        adapter.setListener(this::onClick);
         recyclerView.setAdapter(adapter);
         return view;
     }
 
     public void onClick(int position){
-//        goDetail(position);
+        goDetail(position);
     }
 
     public void goDetail(int position){
@@ -62,7 +63,8 @@ public class InfoFragment extends Fragment {
         Bundle bundle = new Bundle();
 
 //        bundle.putParcelable(requireContext().getString(R.string.argument_key), infoTopic); // calling coffee to bundle obj --> mapping terminologies
-//        NavController controller = NavHostFragment.findNavController(this); // this = this fragment
-//        controller.navigate(R.id.list_to_detail, bundle); // id of the action wrapped with bundle
+        bundle.putParcelable("argument_key", infoTopic);
+        NavController controller = NavHostFragment.findNavController(this); // this = this fragment
+        controller.navigate (R.id.list_to_detail, bundle); // id of the action wrapped with bundle
     }
 }

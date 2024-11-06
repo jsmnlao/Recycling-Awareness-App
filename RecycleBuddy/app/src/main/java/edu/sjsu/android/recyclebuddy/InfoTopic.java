@@ -33,6 +33,9 @@ public class InfoTopic implements Parcelable {
     public int getName() {
         return name;
     }
+    public int getDescription() {
+        return description;
+    }
 
     @Override
     public int describeContents() {
