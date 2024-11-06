@@ -31,7 +31,7 @@ public class LocationsProvider extends ContentProvider {
             return _uri;
         }
         throw new SQLException("Failed to add a record info " + uri);
-    }
+    } 
 
     @Override
     public boolean onCreate() {
