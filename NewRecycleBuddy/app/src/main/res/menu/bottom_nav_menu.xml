@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/nav_community"
+        android:icon="@drawable/leaderboard_icon"
+        android:title="@string/community" />
+
+    <item
+        android:id="@+id/nav_scan"
+        android:icon="@drawable/camera_icon"
+        android:title="@string/scan_here" />
+
+    <item
+        android:id="@+id/nav_info_hub"
+        android:icon="@drawable/info_icon"
+        android:title="@string/info_hub" />
 </menu>

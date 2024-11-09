@@ -6,10 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,7 +82,8 @@ public class LoginFragment extends Fragment {
                     showLoginFailed(loginResult.getError());
                 }
                 if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
+//                    updateUiWithUser(loginResult.getSuccess());
+                    onClick(view);
                 }
             }
         });
@@ -123,6 +127,13 @@ public class LoginFragment extends Fragment {
                         passwordEditText.getText().toString());
             }
         });
+    }
+
+    public void onClick(View v) {
+        Log.d("test", "clicked login/loginfragment with validation");
+
+        NavController navController = Navigation.findNavController(v);
+        navController.navigate(R.id.action_loginFragment_to_homeFragment);
     }
 
     private void updateUiWithUser(LoggedInUserView model) {

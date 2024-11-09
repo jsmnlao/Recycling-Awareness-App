@@ -3,45 +3,30 @@ package edu.sjsu.android.newrecyclebuddy;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class InfoFragment extends Fragment {
+    private ArrayList<InfoTopic> infoTopicList;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public InfoFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment InfoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static InfoFragment newInstance(String param1, String param2) {
         InfoFragment fragment = new InfoFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,16 +34,55 @@ public class InfoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        infoTopicList = new ArrayList<>();
+        infoTopicList.add(new InfoTopic(R.string.topic1_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic2_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic3_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic4_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic5_name, R.string.topic1_description));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info, container, false);
+        Log.d("test", "clicked recyclebuddy/InfoFragment");
+        View view = inflater.inflate(R.layout.fragment_info, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // set the adapter
+        MyAdapter adapter = new MyAdapter(infoTopicList);
+        adapter.setListener(this::onClick);
+        recyclerView.setAdapter(adapter);
+        return view;
+    }
+
+    public void onClick(int position){
+        Log.d("test", "clicked recyclebuddy/InfoFragment onClick method");
+        goDetail(position);
+    }
+
+    public void goDetail(int position){
+        Log.d("test", "clicked recyclebuddy/InfoFragment goDetail method");
+        InfoTopic infoTopic = infoTopicList.get(position);
+        Log.d("test", "infoTopic is: " + infoTopic);
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("argument_key", infoTopic);
+
+        try {
+            NavController controller = NavHostFragment.findNavController(this);
+            NavDestination currentDestination = controller.getCurrentDestination();
+            controller.navigate(R.id.action_nav_info_hub_to_detailFragment, bundle);
+
+            if (currentDestination != null) {
+                Log.d("test", "InfoFragment Current Destination: " + currentDestination.getLabel());
+            } else {
+                Log.d("test", "InfoFragment: No current destination");
+            }
+        } catch (Exception e) {
+            Log.e("test", "Failed to navigate to detail fragment", e);
+        }
+        Log.d("test", "clicked recyclebuddy/InfoFragment END of goDetail method");
     }
 }
