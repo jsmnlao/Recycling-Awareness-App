@@ -6,16 +6,18 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 
 public class InfoTopic implements Parcelable {
-    private final int name, description;
+    private final int name, description, image;
 
-    public InfoTopic(int name, int description) {
+    public InfoTopic(int name, int description, int image) {
         this.name = name;
         this.description = description;
+        this.image = image;
     }
 
     protected InfoTopic(Parcel in) {
         name = in.readInt();
         description = in.readInt();
+        image = in.readInt();
     }
 
     public static final Creator<InfoTopic> CREATOR = new Creator<InfoTopic>() {
@@ -36,6 +38,9 @@ public class InfoTopic implements Parcelable {
     public int getDescription() {
         return description;
     }
+    public int getImage() {
+        return image;
+    }
 
     @Override
     public int describeContents() {
@@ -46,5 +51,6 @@ public class InfoTopic implements Parcelable {
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(name);
         dest.writeInt(description);
+        dest.writeInt(image);
     }
 }
