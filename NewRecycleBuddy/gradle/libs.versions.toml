@@ -1,9 +1,5 @@
 [versions]
-<<<<<<< HEAD
 agp = "8.7.0"
-=======
-agp = "8.5.2"
->>>>>>> 32793c4de764b08524ebf5d25dc08352ff22c450
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -16,15 +12,10 @@ navigationUi = "2.8.3"
 annotation = "1.9.1"
 lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
-<<<<<<< HEAD
 retrofit = "2.11.0"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
-=======
-
-[libraries]
->>>>>>> 32793c4de764b08524ebf5d25dc08352ff22c450
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -37,10 +28,7 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-<<<<<<< HEAD
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-=======
->>>>>>> 32793c4de764b08524ebf5d25dc08352ff22c450
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
