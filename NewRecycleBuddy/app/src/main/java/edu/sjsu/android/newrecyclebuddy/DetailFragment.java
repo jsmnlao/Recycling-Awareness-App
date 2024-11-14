@@ -8,13 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailFragment extends Fragment {
-//    private InfoTopic infoTopic = new InfoTopic(R.string.topic1_name, R.string.topic1_description);
+    //    private InfoTopic infoTopic = new InfoTopic(R.string.topic1_name, R.string.topic1_description);
     private InfoTopic infoTopic;
     private TextView nameTextView;
     private TextView descriptionTextView;
+    private ImageView imageView;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -54,6 +56,8 @@ public class DetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         nameTextView = view.findViewById(R.id.topic_name);
         descriptionTextView = view.findViewById(R.id.description);
+        imageView = view.findViewById(R.id.image);
+
 
         // Use infoTopic to set up your views in detail fragment
         if (infoTopic != null) {
@@ -62,6 +66,7 @@ public class DetailFragment extends Fragment {
 
             nameTextView.setText(getString(infoTopic.getName()));
             descriptionTextView.setText(getString(infoTopic.getDescription()));
+            imageView.setImageResource(infoTopic.getImage());
         }
         else{
             Log.d("test", "InfoTopic is still null in onCreateView");

@@ -35,11 +35,11 @@ public class InfoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         infoTopicList = new ArrayList<>();
-        infoTopicList.add(new InfoTopic(R.string.topic1_name, R.string.topic1_description));
-        infoTopicList.add(new InfoTopic(R.string.topic2_name, R.string.topic1_description));
-        infoTopicList.add(new InfoTopic(R.string.topic3_name, R.string.topic1_description));
-        infoTopicList.add(new InfoTopic(R.string.topic4_name, R.string.topic1_description));
-        infoTopicList.add(new InfoTopic(R.string.topic5_name, R.string.topic1_description));
+        infoTopicList.add(new InfoTopic(R.string.topic1_name, R.string.topic1_description, R.drawable.recyclable_material_types));
+        infoTopicList.add(new InfoTopic(R.string.topic2_name, R.string.topic2_description, R.drawable.triangle_recycle_codes));
+        infoTopicList.add(new InfoTopic(R.string.topic3_name, R.string.topic3_description, R.drawable.recycling_process));
+        infoTopicList.add(new InfoTopic(R.string.topic4_name, R.string.topic4_description, R.drawable.environmental_impacts));
+        infoTopicList.add(new InfoTopic(R.string.topic5_name, R.string.topic5_description, R.drawable.recycling_facts));
     }
 
     @Override

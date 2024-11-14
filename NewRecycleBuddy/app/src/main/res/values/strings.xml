@@ -27,9 +27,86 @@
     <string name="topic3_name">Recycling Process</string>
     <string name="topic4_name">Environmental Impacts</string>
     <string name="topic5_name">Recycling Facts</string>
-    <string name="topic1_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="topic2_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="topic3_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="topic4_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="topic5_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="topic1_description">
+    Paper and Cardboard Sources:\n
+    • Newspapers, office paper, cardboard boxes.\n
+    • Recycling: Shredded, pulped, and reformed into new paper products.\n\n
+    Glass Sources:\n
+    • Beverage bottles, food jars.\n
+    • Recycling: Crushed, sorted by color, melted, and molded into new glass.\n\n
+    Metals (Aluminum and Steel) Sources:\n
+    • Aluminum cans, food cans, scrap metal.\n
+    • Recycling: Shredded, melted, and remade, saving significant energy.\n\n
+    Plastics Sources:\n
+    • Water bottles (PET), milk jugs (HDPE).\n
+    • Recycling: Sorted by type, cleaned, melted, and reformed into pellets.\n\n
+    Sources: EPA, Earth911, National Geographic, Aluminum Association.
+</string>
+
+    <string name="topic2_description">
+    Recycling codes, marked by triangle symbols with numbers, identify plastic types to aid in recycling. Here’s a summary:\n\n
+    #1 PET (Polyethylene Terephthalate)\n
+    • Common Uses: Water bottles, soft drink bottles.\n
+    • Recyclability: Widely recycled, but typically only once.\n\n
+    #2 HDPE (High-Density Polyethylene)\n
+    • Common Uses: Milk jugs, detergent bottles.\n
+    • Recyclability: Highly recyclable and durable.\n\n
+    #3 PVC (Polyvinyl Chloride)\n
+    • Common Uses: Pipes, shrink wrap.\n
+    • Recyclability: Rarely recycled due to toxic chemicals.\n\n
+    #4 LDPE (Low-Density Polyethylene)\n
+    • Common Uses: Plastic bags, cling wrap.\n
+    • Recyclability: Often not curbside recyclable but accepted at special facilities.\n\n
+    #5 PP (Polypropylene)\n
+    • Common Uses: Yogurt containers, straws.\n
+    • Recyclability: Increasingly accepted for recycling.\n\n
+    #6 PS (Polystyrene)\n
+    • Common Uses: Styrofoam cups, takeout containers.\n
+    • Recyclability: Difficult to recycle and usually not accepted.\n\n
+    #7 Other (Miscellaneous Plastics)\n
+    • Common Uses: Mixed plastics, reusable water bottles.\n
+    • Recyclability: Not typically recycled; varies widely.\n\n
+    Sources: EPA, Earth911, Plastic Pollution Coalition.
+</string>
+
+
+    <string name="topic3_description">
+    The recycling process involves a few key steps:\n\n
+    Collection and Transportation\n
+    • Description: Materials are collected from homes, businesses, or drop-off locations and transported to recycling facilities.\n\n
+    Sorting\n
+    • Description: Materials are sorted by type (paper, plastic, glass, metals) using both manual and automated processes to ensure contamination is minimized.\n\n
+    Cleaning and Processing\n
+    • Description: Recyclables are cleaned to remove labels, adhesives, and contaminants. They are then processed (shredded, melted, or pulped) into raw forms like pellets or fibers.\n\n
+    Manufacturing\n
+    • Description: The processed raw materials are used to manufacture new products, which are then reintroduced to the market.\n\n
+    Selling Recycled Products\n
+    • Description: Recycled items are sold, completing the cycle and promoting further recycling.\n\n
+    Sources: EPA, Earth911, National Geographic.
+</string>
+    <string name="topic4_description">
+    Recycling has significant positive environmental impacts:\n\n
+    Reduces Landfill Waste\n
+    • Impact: Diverts waste from landfills, conserving space and reducing pollution from waste decomposition.\n\n
+    Saves Energy and Natural Resources\n
+    • Impact: Recycling materials like metals and paper uses less energy than producing new ones, conserving resources such as trees, water, and fossil fuels.\n\n
+    Decreases Greenhouse Gas Emissions\n
+    • Impact: Reduces emissions from production and landfill methane, helping mitigate climate change.\n\n
+    Limits Pollution\n
+    • Impact: Decreases air and water pollution from waste incineration and resource extraction.\n\n
+    Conserves Wildlife Habitats\n
+    • Impact: Reducing raw material extraction preserves natural habitats and biodiversity.\n\n
+    Sources: EPA, National Geographic, Earth911.
+</string>
+    <string name="topic5_description">
+        Here are some interesting recycling facts and statistics:\n\n
+        • Plastic Waste: In 2021, only 5-6% of the 40 million tons of plastic waste generated in the U.S. was recycled.\n
+        • Energy Savings: Recycling 10 plastic bottles can save enough energy to power a laptop for more than 25 hours.\n
+        • Paper Recycling: Over 50 million tons of paper were recycled in 2021, achieving a 68% recycling rate.\n
+        • Aluminum: Aluminum can be infinitely recycled with 95% less energy than creating new aluminum from raw materials.\n
+        • Ocean Plastic: Between 75 and 199 million tons of plastic are currently in the oceans.\n
+        • Economic Impact: The recycling industry in the U.S. supported 681,000 jobs and generated $37.8 billion in wages in 2020.\n
+        • Cardboard: The recycling rate for corrugated cardboard was 91.4% in 2021. \n\n
+        Sources: EPA, National Geographic, Earth911.
+    </string>
 </resources>
