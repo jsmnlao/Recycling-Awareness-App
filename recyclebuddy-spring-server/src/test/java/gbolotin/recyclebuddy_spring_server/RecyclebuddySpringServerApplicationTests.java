@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @SpringBootTest
 class RecyclebuddySpringServerApplicationTests {
@@ -23,8 +23,9 @@ class RecyclebuddySpringServerApplicationTests {
 	void addUserTest() {
         AppUser user = new AppUser();
         user.setUsername("gbolotin");
-        LocalDateTime now = LocalDateTime.now();
+        OffsetDateTime now = OffsetDateTime.now();
         user.setRegistration(now);
+        user.setName("Galit");
         appUserDao.save(user);
 	}
 

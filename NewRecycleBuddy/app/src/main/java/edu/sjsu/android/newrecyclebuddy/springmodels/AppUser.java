@@ -6,6 +6,7 @@ public class AppUser
 {
     private String username;
     private LocalDateTime registration;
+    private String name;
 
     public String getUsername()
     {
@@ -25,5 +26,13 @@ public class AppUser
     public void setRegistration(LocalDateTime registration)
     {
         this.registration = registration;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

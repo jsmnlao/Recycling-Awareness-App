@@ -15,8 +15,8 @@ public class AppUserDao
     @Autowired
     public AppUserRepo repo;
 
-    public void save(AppUser user){
-        repo.save(user);
+    public AppUser save(AppUser user){
+        return repo.save(user);
     }
 
     public void delete(AppUser user){
