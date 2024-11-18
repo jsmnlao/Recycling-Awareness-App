@@ -1,5 +1,6 @@
 package edu.sjsu.android.newrecyclebuddy;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.time.OffsetDateTime;
+
+import edu.sjsu.android.newrecyclebuddy.retrofit.AppUserApi;
+import edu.sjsu.android.newrecyclebuddy.retrofit.RetrofitService;
+import edu.sjsu.android.newrecyclebuddy.springmodels.AppUser;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +57,50 @@ public class SignupFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
         Button signupButton = view.findViewById(R.id.signup_button);
         Button loginButton = view.findViewById(R.id.login_button);
-        signupButton.setOnClickListener(this::onClick);
+
+        // TODO: Rename those components to be more readable
+        EditText editTextName = view.findViewById(R.id.editTextText);
+        EditText editTextEmail = view.findViewById(R.id.editTextTextEmailAddress);
+        EditText editTextPassword = view.findViewById(R.id.editTextTextPassword);
+
+        // For sending user information inputted in the signup form
+        RetrofitService retrofitService = new RetrofitService();
+        AppUserApi appUserApi = retrofitService.getRetrofit().create(AppUserApi.class);
+
+
+
+        signupButton.setOnClickListener(v -> {
+            // Retrieve the data from the text fields when the signup button is clicked
+            String name = editTextName.getText().toString();
+            String email = editTextEmail.getText().toString();
+            String password = editTextPassword.getText().toString();
+
+            AppUser appUser = new AppUser();
+            appUser.setName(name);
+            appUser.setEmail(email);
+            appUser.setPassword(password);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                OffsetDateTime now = OffsetDateTime.now();
+                appUser.setRegistration(now);
+            }
+
+            // enqueue the post request to prevent unresponsiveness while data is being sent thru the server
+            appUserApi.save(appUser).enqueue(new Callback<AppUser>() {
+                @Override
+                public void onResponse(Call<AppUser> call, Response<AppUser> response) {
+                    Toast.makeText(requireContext(), "Sign up successful! Hi, " + appUser.getName() + ".", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Call<AppUser> call, Throwable throwable) {
+                    Toast.makeText(requireContext(), "Sign up failed, please try again.", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            // Log the values (for testing purposes)
+            Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password);
+        });
+
         loginButton.setOnClickListener(this::onClick);
         return view;
     }

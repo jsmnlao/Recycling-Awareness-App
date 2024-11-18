@@ -1,29 +1,30 @@
 package edu.sjsu.android.newrecyclebuddy.springmodels;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public class AppUser
 {
-    private String username;
-    private LocalDateTime registration;
+    private String email;
+    private OffsetDateTime registration;
     private String name;
+    private String password;
 
-    public String getUsername()
+    public String getEmail()
     {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username)
+    public void setEmail(String email)
     {
-        this.username = username;
+        this.email = email;
     }
 
-    public LocalDateTime getRegistration()
+    public OffsetDateTime getRegistration()
     {
         return registration;
     }
 
-    public void setRegistration(LocalDateTime registration)
+    public void setRegistration(OffsetDateTime registration)
     {
         this.registration = registration;
     }
@@ -34,5 +35,13 @@ public class AppUser
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

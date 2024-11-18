@@ -22,7 +22,7 @@ class RecyclebuddySpringServerApplicationTests {
 	@Test
 	void addUserTest() {
         AppUser user = new AppUser();
-        user.setUsername("gbolotin");
+        user.setEmail("gbolotin");
         OffsetDateTime now = OffsetDateTime.now();
         user.setRegistration(now);
         user.setName("Galit");

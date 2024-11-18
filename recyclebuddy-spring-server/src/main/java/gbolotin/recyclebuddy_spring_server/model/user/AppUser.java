@@ -9,18 +9,19 @@ import java.time.OffsetDateTime;
 public class AppUser
 {
     @Id
-    private String username;
+    private String email;
     private OffsetDateTime registration;
     private String name;
+    private String password; // TODO: password encryption and other security stuff
 
-    public String getUsername()
+    public String getEmail()
     {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username)
+    public void setEmail(String email)
     {
-        this.username = username;
+        this.email = email;
     }
 
     public OffsetDateTime getRegistration()
@@ -41,5 +42,15 @@ public class AppUser
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }
