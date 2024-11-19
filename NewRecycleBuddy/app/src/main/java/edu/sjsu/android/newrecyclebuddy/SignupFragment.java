@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.time.OffsetDateTime;
+import java.util.Objects;
 
 import edu.sjsu.android.newrecyclebuddy.retrofit.AppUserApi;
 import edu.sjsu.android.newrecyclebuddy.retrofit.RetrofitService;
@@ -34,7 +35,6 @@ public class SignupFragment extends Fragment {
     public SignupFragment() {
         // Required empty public constructor
     }
-
 
     public static SignupFragment newInstance(String param1, String param2) {
         SignupFragment fragment = new SignupFragment();
@@ -79,10 +79,8 @@ public class SignupFragment extends Fragment {
             appUser.setName(name);
             appUser.setEmail(email);
             appUser.setPassword(password);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                OffsetDateTime now = OffsetDateTime.now();
-                appUser.setRegistration(now);
-            }
+            OffsetDateTime now = OffsetDateTime.now();
+            appUser.setRegistration(now);
 
             // enqueue the post request to prevent unresponsiveness while data is being sent thru the server
             appUserApi.save(appUser).enqueue(new Callback<AppUser>() {
@@ -94,11 +92,12 @@ public class SignupFragment extends Fragment {
                 @Override
                 public void onFailure(Call<AppUser> call, Throwable throwable) {
                     Toast.makeText(requireContext(), "Sign up failed, please try again.", Toast.LENGTH_SHORT).show();
+                    Log.d("test", Objects.requireNonNull(throwable.getMessage()));
                 }
             });
 
             // Log the values (for testing purposes)
-            Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password);
+            Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password + ", Time: " + appUser.getRegistration());
         });
 
         loginButton.setOnClickListener(this::onClick);
