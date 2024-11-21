@@ -13,7 +13,7 @@ public class RetrofitService{
 
     private void initializeRetrofit(){
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.250.54.104:8080") // using my current IP, will need to change to your own or whatever we figure out with mongodb?
+                .baseUrl("http://192.168.56.1:8081") // using my current IP, will need to change to your own or whatever we figure out with mongodb?
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
     }

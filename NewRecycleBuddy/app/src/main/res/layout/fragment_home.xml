@@ -1,9 +1,10 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,10 +46,8 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
-        android:scaleType="centerCrop"
+        android:background="@drawable/home_icon"
         android:layout_marginTop="16dp"/>
-<!--        android:src="@drawable/profile_image"-->
-<!--        android:background="@drawable/circular_background"-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,7 +78,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
-            android:background="@drawable/plastic_bottle_icon"/>
+            android:background="@drawable/plastic_bottle_icon"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/plastic_bottles"
@@ -113,7 +113,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
-            android:background="@drawable/aluminum_can_icon"/>
+            android:background="@drawable/aluminum_can_icon"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/aluminum_cans"
@@ -147,7 +148,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
-            android:background="@drawable/glass_bottle_icon"/>
+            android:background="@drawable/glass_bottle_icon"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/glass_bottles"
@@ -181,7 +183,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
-            android:background="@drawable/cardboard_icon"/>
+            android:background="@drawable/cardboard_icon"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/cardboard"
@@ -215,7 +218,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
-            android:background="@drawable/paper_icon"/>
+            android:background="@drawable/paper_icon"
+            android:backgroundTint="@color/white"/>
 
         <TextView
             android:id="@+id/paper"

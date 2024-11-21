@@ -83,7 +83,7 @@ public class LoginFragment extends Fragment {
                 }
                 if (loginResult.getSuccess() != null) {
 //                    updateUiWithUser(loginResult.getSuccess());
-                    onClick(view);
+                    onClickCustom(view);
                 }
             }
         });
@@ -129,11 +129,14 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    public void onClick(View v) {
-        Log.d("test", "clicked login/loginfragment with validation");
-
-        NavController navController = Navigation.findNavController(v);
-        navController.navigate(R.id.action_loginFragment_to_homeFragment);
+    public void onClickCustom(View v) {
+        Log.d("test", "Navigating to home fragment");
+        try {
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_loginFragment_to_homeFragment);
+        } catch (Exception e) {
+            Log.e("test", "Failed to navigate: " + e.getMessage());
+        }
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
