@@ -24,7 +24,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link SignupFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
 public class SignupFragment extends Fragment {
 
     public SignupFragment() {
@@ -78,10 +82,7 @@ public class SignupFragment extends Fragment {
                 appUser.setName(name);
                 appUser.setEmail(email);
                 appUser.setPassword(password);
-                OffsetDateTime now = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    now = OffsetDateTime.now();
-                }
+                OffsetDateTime now = OffsetDateTime.now();
                 appUser.setRegistration(now);
 
                 // enqueue the post request to prevent unresponsiveness while data is being sent thru the server
