@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = "gbolotin.recyclebuddy_spring_server")
-@EnableAutoConfiguration
 public class Application
 {
 

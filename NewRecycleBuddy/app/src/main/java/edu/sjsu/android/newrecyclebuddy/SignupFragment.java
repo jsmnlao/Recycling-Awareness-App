@@ -82,7 +82,10 @@ public class SignupFragment extends Fragment {
                 appUser.setName(name);
                 appUser.setEmail(email);
                 appUser.setPassword(password);
-                OffsetDateTime now = OffsetDateTime.now();
+                OffsetDateTime now = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    now = OffsetDateTime.now();
+                }
                 appUser.setRegistration(now);
 
                 // enqueue the post request to prevent unresponsiveness while data is being sent thru the server
