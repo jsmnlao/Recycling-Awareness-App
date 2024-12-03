@@ -1,7 +1,10 @@
 package edu.sjsu.android.newrecyclebuddy;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -14,7 +17,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.time.OffsetDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import edu.sjsu.android.newrecyclebuddy.retrofit.AppUserApi;
@@ -62,8 +72,8 @@ public class SignupFragment extends Fragment {
         EditText editTextPasswordVar = view.findViewById(R.id.editTextPassword);
 
         // For sending user information inputted in the signup form
-        RetrofitService retrofitService = new RetrofitService();
-        AppUserApi appUserApi = retrofitService.getRetrofit().create(AppUserApi.class);
+//        RetrofitService retrofitService = new RetrofitService();
+//        AppUserApi appUserApi = retrofitService.getRetrofit().create(AppUserApi.class);
 
         signupButton.setOnClickListener(v -> {
             // Retrieve the data from the text fields when the signup button is clicked
@@ -78,34 +88,33 @@ public class SignupFragment extends Fragment {
                 navController.navigate(R.id.action_signupFragment_to_loginFragment);
             }
             else{
-                AppUser appUser = new AppUser();
-                appUser.setName(name);
-                appUser.setEmail(email);
-                appUser.setPassword(password);
-                OffsetDateTime now = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    now = OffsetDateTime.now();
-                }
-                appUser.setRegistration(now);
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Map<String, Object> user = new HashMap<>();
+                user.put("Name", name);
+                user.put("Email", email);
+                user.put("Password", password); // not secure, would need to hash password instead of storing directly
 
-                // enqueue the post request to prevent unresponsiveness while data is being sent thru the server
-                appUserApi.save(appUser).enqueue(new Callback<AppUser>() {
-                    @Override
-                    public void onResponse(Call<AppUser> call, Response<AppUser> response) {
-                        Toast.makeText(requireContext(), "Sign up successful! Hi, " + appUser.getName() + ".", Toast.LENGTH_SHORT).show();
-                        NavController navController = Navigation.findNavController(v);
-                        navController.navigate(R.id.action_signupFragment_to_loginFragment);
-                    }
+                OffsetDateTime now = OffsetDateTime.now();
+                user.put("Registration", now);
 
-                    @Override
-                    public void onFailure(Call<AppUser> call, Throwable throwable) {
-                        Toast.makeText(requireContext(), "Sign up failed, please try again.", Toast.LENGTH_SHORT).show();
-                        Log.d("test", Objects.requireNonNull(throwable.getMessage()));
-                    }
-                });
-
-                // Log the values (for testing purposes)
-                Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password + ", Time: " + appUser.getRegistration());
+                db.collection("userbase")
+                        .add(user)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password + ", Time: " + user.get("Registration"));
+                                Toast.makeText(requireContext(), "Sign up successful! Hi, " + user.get("Name") + ".", Toast.LENGTH_SHORT).show();
+                                NavController navController = Navigation.findNavController(v);
+                                navController.navigate(R.id.action_signupFragment_to_loginFragment);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error adding document", e);
+                            }
+                        });
             }
         });
 
