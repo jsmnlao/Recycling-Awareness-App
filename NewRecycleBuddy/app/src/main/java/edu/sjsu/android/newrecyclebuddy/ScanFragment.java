@@ -3,6 +3,7 @@ package edu.sjsu.android.newrecyclebuddy;
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ public class ScanFragment extends Fragment {
     private Button uploadImageButton;
     private Button analyzeButton;
     private final int GALLERY_REQUEST_CODE = 1;
-
+    private Image imageToAnalyze;
 
     public ScanFragment() {
         // Required empty public constructor
@@ -49,7 +50,12 @@ public class ScanFragment extends Fragment {
         analyzeButton = view.findViewById(R.id.analyze_button);
 
         uploadImageButton.setOnClickListener(v -> openGallery()); // when upload button is clicked, gallery is opened
+        analyzeButton.setOnClickListener(v -> analyzeImage());
         return view;
+    }
+
+    private void analyzeImage() {
+
     }
 
     public void openGallery(){

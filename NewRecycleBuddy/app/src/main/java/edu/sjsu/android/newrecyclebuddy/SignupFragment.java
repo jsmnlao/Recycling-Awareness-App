@@ -55,7 +55,7 @@ public class SignupFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
         Button signupButton = view.findViewById(R.id.signup_button);
-        Button loginButton = view.findViewById(R.id.login_button);
+//        Button loginButton = view.findViewById(R.id.login_button);
 
         EditText editTextNameVar = view.findViewById(R.id.editTextName);
         EditText editTextEmailVar = view.findViewById(R.id.editTextEmail);
@@ -109,7 +109,7 @@ public class SignupFragment extends Fragment {
             }
         });
 
-        loginButton.setOnClickListener(this::onClick);
+//        loginButton.setOnClickListener(this::onClick);
         return view;
     }
 

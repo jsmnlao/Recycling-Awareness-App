@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.logging.interceptor)
     implementation(libs.okhttp)
     implementation(libs.appcompat)
     implementation(libs.material)
