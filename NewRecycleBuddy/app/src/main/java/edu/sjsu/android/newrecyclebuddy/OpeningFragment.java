@@ -3,6 +3,7 @@ package edu.sjsu.android.newrecyclebuddy;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.util.Log;
@@ -34,9 +35,23 @@ public class OpeningFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_opening, container, false);
-        Button getStartedButton = view.findViewById(R.id.get_started_button);
-        getStartedButton.setOnClickListener(this::onGetStartedClicked);
+        Button loginButton = view.findViewById(R.id.login_button);
+        Button signupButton = view.findViewById(R.id.signup_button);
+        loginButton.setOnClickListener(this::goToLogin);
+        signupButton.setOnClickListener(this::goToSignup);
         return view;
+    }
+
+    private void goToLogin(View view) {
+        Log.d("test", "clicked login button in opening fragment");
+        NavController controller = Navigation.findNavController(view);
+        controller.navigate(R.id.action_openingFragment_to_loginFragment);
+    }
+
+    private void goToSignup(View view) {
+        Log.d("test", "clicked signup button in opening fragment");
+        NavController controller = Navigation.findNavController(view);
+        controller.navigate(R.id.action_openingFragment_to_signupFragment);
     }
 
     public void onGetStartedClicked(View view) {

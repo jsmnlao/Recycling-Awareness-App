@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,11 +35,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SignupFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SignupFragment extends Fragment {
 
     public SignupFragment() {
@@ -65,7 +61,9 @@ public class SignupFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
         Button signupButton = view.findViewById(R.id.signup_button);
-        Button loginButton = view.findViewById(R.id.login_button);
+        TextView already_have_account = view.findViewById(R.id.already_have_account_text);
+        already_have_account.setOnClickListener(this::navigateToLogin);
+//        Button loginButton = view.findViewById(R.id.login_button);
 
         EditText editTextNameVar = view.findViewById(R.id.editTextName);
         EditText editTextEmailVar = view.findViewById(R.id.editTextEmail);
@@ -118,8 +116,13 @@ public class SignupFragment extends Fragment {
             }
         });
 
-        loginButton.setOnClickListener(this::onClick);
+//        loginButton.setOnClickListener(this::onClick);
         return view;
+    }
+
+    private void navigateToLogin(View view) {
+        NavController controller = Navigation.findNavController(view);
+        controller.navigate(R.id.action_signupFragment_to_loginFragment);
     }
 
     public void onClick(View v) {
