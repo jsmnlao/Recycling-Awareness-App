@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "161793385466",
+    "project_id": "recyclebuddy-b3606",
+    "storage_bucket": "recyclebuddy-b3606.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161793385466:android:9659a866d7583e5ea83a43",
+        "android_client_info": {
+          "package_name": "edu.sjsu.android.newrecyclebuddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-sPUDjFhJsh9bVAQp7DSCBfBtLzKL0JA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
