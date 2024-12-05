@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.time.OffsetDateTime;
@@ -69,9 +70,6 @@ public class SignupFragment extends Fragment {
         EditText editTextEmailVar = view.findViewById(R.id.editTextEmail);
         EditText editTextPasswordVar = view.findViewById(R.id.editTextPassword);
 
-        // For sending user information inputted in the signup form
-//        RetrofitService retrofitService = new RetrofitService();
-//        AppUserApi appUserApi = retrofitService.getRetrofit().create(AppUserApi.class);
 
         signupButton.setOnClickListener(v -> {
             // Retrieve the data from the text fields when the signup button is clicked
@@ -79,44 +77,49 @@ public class SignupFragment extends Fragment {
             String email = editTextEmailVar.getText().toString();
             String password = editTextPasswordVar.getText().toString();
 
-            // Temporary debug signup: allows entering an empty form without server running
-            if (name.isEmpty() && email.isEmpty() && password.isEmpty()){
-                Toast.makeText(requireContext(), "Sign up successful! Hi, Jane Doe.", Toast.LENGTH_SHORT).show();
-                NavController navController = Navigation.findNavController(v);
-                navController.navigate(R.id.action_signupFragment_to_loginFragment);
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "All fields are required.", Toast.LENGTH_SHORT).show();
+                return;
             }
-            else{
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                Map<String, Object> user = new HashMap<>();
-                user.put("Name", name);
-                user.put("Email", email);
-                user.put("Password", password); // not secure, would need to hash password instead of storing directly
 
-                OffsetDateTime now = OffsetDateTime.now();
-                user.put("Registration", now);
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                db.collection("userbase")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password + ", Time: " + user.get("Registration"));
-                                Toast.makeText(requireContext(), "Sign up successful! Hi, " + user.get("Name") + ".", Toast.LENGTH_SHORT).show();
-                                NavController navController = Navigation.findNavController(v);
-                                navController.navigate(R.id.action_signupFragment_to_loginFragment);
+            // Check if the email already exists
+            db.collection("userbase")
+                    .document(email)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                // Email already exists
+                                Toast.makeText(requireContext(), "Email already in use. Please log in or use a different email.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Proceed with signup
+                                Map<String, Object> user = new HashMap<>();
+                                user.put("Name", name);
+                                user.put("Email", email);
+                                user.put("Password", password); // Consider hashing passwords in production
+                                user.put("Registration", OffsetDateTime.now());
+
+                                db.collection("userbase")
+                                        .document(email)
+                                        .set(user)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                                            Toast.makeText(requireContext(), "Sign up successful! Hi, " + user.get("Name") + ".", Toast.LENGTH_SHORT).show();
+                                            NavController navController = Navigation.findNavController(v);
+                                            navController.navigate(R.id.action_signupFragment_to_loginFragment);
+                                        })
+                                        .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
                             }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-            }
+                        } else {
+                            Log.e(TAG, "Error checking email existence: ", task.getException());
+                            Toast.makeText(requireContext(), "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
-//        loginButton.setOnClickListener(this::onClick);
         return view;
     }
 
