@@ -94,9 +94,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:textColorHint="@color/white"
-                app:startIconDrawable="@drawable/ic_password"
-
-                android:layout_marginTop="16dp">
+                app:startIconDrawable="@drawable/ic_password">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPassword"
