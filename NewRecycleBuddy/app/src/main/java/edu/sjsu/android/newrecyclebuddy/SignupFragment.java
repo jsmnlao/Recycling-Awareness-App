@@ -1,7 +1,10 @@
 package edu.sjsu.android.newrecyclebuddy;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -15,7 +18,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.time.OffsetDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import edu.sjsu.android.newrecyclebuddy.retrofit.AppUserApi;
@@ -59,9 +70,6 @@ public class SignupFragment extends Fragment {
         EditText editTextEmailVar = view.findViewById(R.id.editTextEmail);
         EditText editTextPasswordVar = view.findViewById(R.id.editTextPassword);
 
-        // For sending user information inputted in the signup form
-        RetrofitService retrofitService = new RetrofitService();
-        AppUserApi appUserApi = retrofitService.getRetrofit().create(AppUserApi.class);
 
         signupButton.setOnClickListener(v -> {
             // Retrieve the data from the text fields when the signup button is clicked
@@ -69,45 +77,49 @@ public class SignupFragment extends Fragment {
             String email = editTextEmailVar.getText().toString();
             String password = editTextPasswordVar.getText().toString();
 
-            // Temporary debug signup: allows entering an empty form without server running
-            if (name.isEmpty() && email.isEmpty() && password.isEmpty()){
-                Toast.makeText(requireContext(), "Sign up successful! Hi, Jane Doe.", Toast.LENGTH_SHORT).show();
-                NavController navController = Navigation.findNavController(v);
-                navController.navigate(R.id.action_signupFragment_to_loginFragment);
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(requireContext(), "All fields are required.", Toast.LENGTH_SHORT).show();
+                return;
             }
-            else{
-                AppUser appUser = new AppUser();
-                appUser.setName(name);
-                appUser.setEmail(email);
-                appUser.setPassword(password);
-                OffsetDateTime now = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    now = OffsetDateTime.now();
-                }
-                appUser.setRegistration(now);
 
-                // enqueue the post request to prevent unresponsiveness while data is being sent thru the server
-                appUserApi.save(appUser).enqueue(new Callback<AppUser>() {
-                    @Override
-                    public void onResponse(Call<AppUser> call, Response<AppUser> response) {
-                        Toast.makeText(requireContext(), "Sign up successful! Hi, " + appUser.getName() + ".", Toast.LENGTH_SHORT).show();
-                        NavController navController = Navigation.findNavController(v);
-                        navController.navigate(R.id.action_signupFragment_to_loginFragment);
-                    }
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-                    @Override
-                    public void onFailure(Call<AppUser> call, Throwable throwable) {
-                        Toast.makeText(requireContext(), "Sign up failed, please try again.", Toast.LENGTH_SHORT).show();
-                        Log.d("test", Objects.requireNonNull(throwable.getMessage()));
-                    }
-                });
+            // Check if the email already exists
+            db.collection("userbase")
+                    .document(email)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                // Email already exists
+                                Toast.makeText(requireContext(), "Email already in use. Please log in or use a different email.", Toast.LENGTH_SHORT).show();
+                            } else {
+                                // Proceed with signup
+                                Map<String, Object> user = new HashMap<>();
+                                user.put("Name", name);
+                                user.put("Email", email);
+                                user.put("Password", password); // Consider hashing passwords in production
+                                user.put("Registration", OffsetDateTime.now());
 
-                // Log the values (for testing purposes)
-                Log.d("test", "Name: " + name + ", Email: " + email + ", Password: " + password + ", Time: " + appUser.getRegistration());
-            }
+                                db.collection("userbase")
+                                        .document(email)
+                                        .set(user)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                                            Toast.makeText(requireContext(), "Sign up successful! Hi, " + user.get("Name") + ".", Toast.LENGTH_SHORT).show();
+                                            NavController navController = Navigation.findNavController(v);
+                                            navController.navigate(R.id.action_signupFragment_to_loginFragment);
+                                        })
+                                        .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
+                            }
+                        } else {
+                            Log.e(TAG, "Error checking email existence: ", task.getException());
+                            Toast.makeText(requireContext(), "An error occurred. Please try again.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
 
-//        loginButton.setOnClickListener(this::onClick);
         return view;
     }
 
