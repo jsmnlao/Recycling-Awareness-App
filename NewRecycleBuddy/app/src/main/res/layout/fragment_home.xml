@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".HomeFragment">
@@ -9,88 +9,90 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:background="@color/primary_color"
         android:gravity="center_vertical"
-        android:padding="8dp"
-        android:background="@color/primary_color">
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Settings"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_weight="1"/>
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Homepage"
-            android:textSize="28sp"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/logout_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
             android:text="Logout"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_weight="1"
-            android:gravity="end"/>
+            android:textSize="16sp" />
     </LinearLayout>
 
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
-        android:background="@drawable/home_icon"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:background="@drawable/home_icon" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
-        android:textColor="@color/black"
         android:text="Welcome back!"
-        android:textSize="16sp"/>
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <TextView
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/black"
+        android:layout_marginBottom="16dp"
         android:text="Jane Doe"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/primary_color"
         android:orientation="horizontal"
-        android:padding="15dp"
-        android:background="@color/primary_color">
+        android:padding="15dp">
+
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/plastic_bottle_icon"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white" />
 
         <TextView
             android:id="@+id/plastic_bottles"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="Plastic"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/plastic_bottles_count"
@@ -99,33 +101,34 @@
             android:layout_gravity="end"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:padding="15dp"
-        android:background="@color/primary_color">
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/aluminum_can_icon"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white" />
 
         <TextView
             android:id="@+id/aluminum_cans"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="Metal"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/aluminum_cans_count"
@@ -134,33 +137,34 @@
             android:layout_gravity="end"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:padding="15dp"
-        android:background="@color/primary_color">
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/glass_bottle_icon"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white" />
 
         <TextView
             android:id="@+id/glass_bottles"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="Glass"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/glass_bottles_count"
@@ -169,33 +173,34 @@
             android:layout_gravity="end"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:padding="15dp"
-        android:background="@color/primary_color">
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/cardboard_icon"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white" />
 
         <TextView
             android:id="@+id/cardboard"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="Cardboard"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/cardboard_count"
@@ -204,33 +209,34 @@
             android:layout_gravity="end"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="10dp"
-        android:padding="15dp"
-        android:background="@color/primary_color">
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <View
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/paper_icon"
-            android:backgroundTint="@color/white"/>
+            android:backgroundTint="@color/white" />
 
         <TextView
             android:id="@+id/paper"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:text="Paper"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/paper_count"
@@ -239,7 +245,7 @@
             android:layout_gravity="end"
             android:text="1"
             android:textColor="@color/white"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>

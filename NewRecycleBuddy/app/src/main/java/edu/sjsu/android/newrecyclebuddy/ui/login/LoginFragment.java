@@ -1,7 +1,5 @@
 package edu.sjsu.android.newrecyclebuddy.ui.login;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
@@ -11,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,19 +22,14 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Objects;
 
 import edu.sjsu.android.newrecyclebuddy.databinding.FragmentLoginBinding;
 
@@ -140,6 +135,7 @@ public class LoginFragment extends Fragment {
                                         } else {
                                             for (QueryDocumentSnapshot document : task.getResult()) {
                                                 Log.d("login", document.getId() + " => " + document.getData());
+                                                storeLoggedInEmail(usernameEditText.getText().toString());
                                                 loginViewModel.login(usernameEditText.getText().toString(),
                                                         passwordEditText.getText().toString());
                                             }
@@ -176,6 +172,8 @@ public class LoginFragment extends Fragment {
                                     // if user exists, log in
                                     else{
                                         for (QueryDocumentSnapshot document : task.getResult()) {
+                                            // store current username and name to retrieve in home fragment after logging in
+                                            storeLoggedInEmail(usernameEditText.getText().toString());
                                             Log.d("login", document.getId() + " => " + document.getData());
                                             // log in
                                             loginViewModel.login(usernameEditText.getText().toString(),
@@ -189,6 +187,14 @@ public class LoginFragment extends Fragment {
                         });
             }
         });
+    }
+
+    public void storeLoggedInEmail(String email){
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear(); // Clear all previous data
+        editor.putString("userEmail", email);
+        editor.apply();
     }
 
     public void onClickCustom(View v) {
