@@ -1,6 +1,8 @@
 package edu.sjsu.android.newrecyclebuddy;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -39,9 +43,35 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d("test", "onCreateView in HomeFragment");
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-//        TextView logoutText = view.findViewById(R.id.logout_text);
+
+        // Fetch the current user's name
+        // Access SharedPreferences to retrieve user details
+        fetchAndDisplayUserName();
+
 //        logoutText.setOnClickListener(this::logout);
         return view;
+    }
+
+    // update home page name to current user's name
+    public void fetchAndDisplayUserName() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        String email = sharedPreferences.getString("userEmail", null);
+
+        if (email != null) {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("userbase").document(email)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String name = documentSnapshot.getString("Name");
+                            TextView userNameTextView = getView().findViewById(R.id.user_name);
+                            if (userNameTextView != null) {
+                                userNameTextView.setText(name); // Update the UI with the latest data
+                            }
+                        }
+                    })
+                    .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user data: " + e.getMessage()));
+        }
     }
 
     private void logout(View view) {
