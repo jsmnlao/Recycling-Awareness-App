@@ -1,5 +1,0 @@
-edu.sjsu.android.recyclebuddy.test.app-core-1.6.1-0 /Users/bhavdeeprandhawa/.gradle/caches/transforms-4/9f5d7facca1aecd62650618df959930d/transformed/core-1.6.1/res
-edu.sjsu.android.recyclebuddy.test.app-androidTest-1 /Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/generated/res/resValues/androidTest/debug
-edu.sjsu.android.recyclebuddy.test.app-mergeDebugAndroidTestResources-2 /Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/merged.dir
-edu.sjsu.android.recyclebuddy.test.app-mergeDebugAndroidTestResources-3 /Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/intermediates/incremental/debugAndroidTest/mergeDebugAndroidTestResources/stripped.dir
-edu.sjsu.android.recyclebuddy.test.app-debugAndroidTest-4 /Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/intermediates/merged_res/debugAndroidTest/mergeDebugAndroidTestResources

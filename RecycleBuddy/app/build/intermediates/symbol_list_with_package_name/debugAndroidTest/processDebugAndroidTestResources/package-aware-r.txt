@@ -1,3 +1,0 @@
-edu.sjsu.android.recyclebuddy.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
