@@ -25,6 +25,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class HomeFragment extends Fragment {
+    private TextView logoutButton;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -47,6 +48,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d("test", "onCreateView in HomeFragment");
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        logoutButton = view.findViewById(R.id.logout_text);
+        logoutButton.setOnClickListener(this::logout);
 
         // Fetch the current user's name
         // Access SharedPreferences to retrieve user details
@@ -97,7 +100,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void logout(View view) {
-        Log.d("test", "clicked logout button in home fragment");
-        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_openingFragment);
+        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_loginFragment);
     }
 }
