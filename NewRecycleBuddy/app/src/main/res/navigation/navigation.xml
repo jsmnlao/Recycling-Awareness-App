@@ -73,7 +73,11 @@
         android:id="@+id/detailFragment"
         android:name="edu.sjsu.android.newrecyclebuddy.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_nav_info_hub"
+            app:destination="@id/nav_info_hub" />
+    </fragment>
 
 </navigation>
 

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,9 +22,14 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import edu.sjsu.android.newrecyclebuddy.databinding.FragmentLoginBinding;
 
@@ -111,25 +118,83 @@ public class LoginFragment extends Fragment {
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
+                if (actionId == EditorInfo.IME_ACTION_DONE) { // if checkmark clicked on keyboard, still do validation
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("userbase")
+                            .whereEqualTo("Email", usernameEditText.getText().toString())
+                            .whereEqualTo("Password", passwordEditText.getText().toString())
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        if (task.getResult().isEmpty()) {
+                                            Toast.makeText(requireContext(), "Email or password incorrect, please try again.", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                                Log.d("login", document.getId() + " => " + document.getData());
+                                                storeLoggedInEmail(usernameEditText.getText().toString());
+                                                loginViewModel.login(usernameEditText.getText().toString(),
+                                                        passwordEditText.getText().toString());
+                                            }
+                                        }
+                                    } else {
+                                        Log.d("login", "Error getting documents: ", task.getException());
+                                    }
+                                }
+                            });
+                    return true;
                 }
                 return false;
             }
         });
 
+        // login button user validation
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("userbase")
+                        .whereEqualTo("Email", usernameEditText.getText().toString())
+                        .whereEqualTo("Password", passwordEditText.getText().toString())
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    // if user doesn't exist in database
+                                    if (task.getResult().isEmpty()){
+                                        Toast.makeText(requireContext(), "Email or password incorrect, please try again.", Toast.LENGTH_SHORT).show();
+                                    }
+                                    // if user exists, log in
+                                    else{
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            // store current username and name to retrieve in home fragment after logging in
+                                            storeLoggedInEmail(usernameEditText.getText().toString());
+                                            Log.d("login", document.getId() + " => " + document.getData());
+                                            // log in
+                                            loginViewModel.login(usernameEditText.getText().toString(),
+                                                    passwordEditText.getText().toString());
+                                        }
+                                    }
+                                } else {
+                                    Log.d("login", "Error getting documents: ", task.getException());
+                                }
+                            }
+                        });
             }
         });
+    }
+
+    public void storeLoggedInEmail(String email){
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear(); // Clear all previous data
+        editor.putString("userEmail", email);
+        editor.apply();
     }
 
     public void onClickCustom(View v) {

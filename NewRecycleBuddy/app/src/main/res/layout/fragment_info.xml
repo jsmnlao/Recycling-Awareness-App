@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
     tools:context=".InfoFragment">
 
     <TextView
@@ -12,34 +14,36 @@
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:text="Information Hub"
+        android:textAppearance="?attr/textAppearanceListItem"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:id="@+id/search_topics_title"
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:background="@drawable/search_background"
-        android:ems="10"
-        android:hint="Search topics"
-        android:inputType="text"
-        android:padding="25dp"
-        android:textColor="#4E5548"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_hub_title" />
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:text="@string/CategoryIntro1"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/CategoryIntro2"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="409dp"
-        android:layout_height="578dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_topics_title" />
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        tools:listitem="@layout/row_layout" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
