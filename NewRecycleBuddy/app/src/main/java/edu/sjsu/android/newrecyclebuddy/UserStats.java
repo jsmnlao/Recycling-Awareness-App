@@ -9,6 +9,8 @@ public class UserStats {
     private int cardboard_count;
     private int paper_count;
 
+    private int total;
+
     public UserStats() {
     }
     public UserStats(String name, int plastic_count, int metal_count, int glass_count, int cardboard_count, int paper_count) {
@@ -18,6 +20,11 @@ public class UserStats {
         this.glass_count = glass_count;
         this.cardboard_count = cardboard_count;
         this.paper_count = paper_count;
+    }
+
+    public UserStats(String name, int total) {
+        this.name = name;
+        this.total = total;
     }
 
     public String getName(){
@@ -38,6 +45,12 @@ public class UserStats {
     }
     public int getPaper_count() {
         return paper_count;
+    }
+
+    public int getTotal() { return total; }
+
+    public void setTotal() {
+        this.total = plastic_count + metal_count + glass_count + cardboard_count + paper_count;
     }
 
 
