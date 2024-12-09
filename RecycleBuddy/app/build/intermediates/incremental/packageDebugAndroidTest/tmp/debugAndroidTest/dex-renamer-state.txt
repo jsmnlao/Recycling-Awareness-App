@@ -1,0 +1,10 @@
+#Sun Nov 03 16:58:28 PST 2024
+base.0=/Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/intermediates/dex/debugAndroidTest/mergeExtDexDebugAndroidTest/classes.dex
+base.1=/Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/0/classes.dex
+base.2=/Users/bhavdeeprandhawa/Documents/Recycling-Awareness-App/RecycleBuddy/app/build/intermediates/dex/debugAndroidTest/mergeProjectDexDebugAndroidTest/3/classes.dex
+path.0=classes.dex
+path.1=0/classes.dex
+path.2=3/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
+renamed.2=classes3.dex

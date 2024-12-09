@@ -1,0 +1,134 @@
+[
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_community.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_community.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_homepage.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_homepage.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/navigation_navigation.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/navigation/navigation.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_leaderboard_icon.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/leaderboard_icon.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_startnav.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_startnav.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_login.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_login.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_activity_main.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/activity_main.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_home_icon.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/home_icon.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_main.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_main.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_camera_icon.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/camera_icon.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_signup.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_signup.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_ic_launcher_background.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/xml_data_extraction_rules.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_info_icon.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/info_icon.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/xml_backup_rules.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/menu_bottom_menu.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/menu/bottom_menu.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_activity_homepage.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/activity_homepage.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_info.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_info.xml"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/drawable_cartoon_tree.jpg.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/drawable/cartoon_tree.jpg"
+    },
+    {
+        "merged": "edu.sjsu.android.recyclebuddy.app-debug-44:/layout_fragment_scan.xml.flat",
+        "source": "edu.sjsu.android.recyclebuddy.app-main-46:/layout/fragment_scan.xml"
+    }
+]

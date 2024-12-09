@@ -95,7 +95,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/plastic_bottles_count"
+            android:id="@+id/plastic_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -131,7 +131,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/aluminum_cans_count"
+            android:id="@+id/metal_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -167,7 +167,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/glass_bottles_count"
+            android:id="@+id/glass_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "edu.sjsu.android.recyclebuddy.app-mergeDebugResources-42:/values-watch-v20/values-watch-v20.xml",
+            "map": [
+                {
+                    "source": "/Users/bhavdeeprandhawa/.gradle/caches/8.11/transforms/3e51f1ae36e7ae8eefecad22fd4098b3/transformed/appcompat-1.7.0/res/values-watch-v20/values-watch-v20.xml",
+                    "from": {
+                        "startLines": "2,5,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,214,385",
+                        "endLines": "4,7,10",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "209,380,553"
+                    }
+                }
+            ]
+        }
+    ]
+}
