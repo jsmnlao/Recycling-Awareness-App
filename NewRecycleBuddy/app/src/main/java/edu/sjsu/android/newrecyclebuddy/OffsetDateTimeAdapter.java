@@ -1,4 +1,4 @@
-package edu.sjsu.android.newrecyclebuddy.retrofit;
+package edu.sjsu.android.newrecyclebuddy;
 
 import com.google.gson.*;
 import java.lang.reflect.Type;
