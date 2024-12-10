@@ -205,9 +205,7 @@ public class ScanFragment extends Fragment {
                         Log.d("test", "Prediction is: " + prediction);
                         //increment category count in database
                         if(prediction.contains("true")) {
-                            Log.d("test", "Incrementing category count...");
                             incrementCategoryCount(category);
-                            Log.d("test", "Incremented category count");
                         }
 
                         String predictionStatus = prediction.contains("true") ? "Yes!" : "No!";
