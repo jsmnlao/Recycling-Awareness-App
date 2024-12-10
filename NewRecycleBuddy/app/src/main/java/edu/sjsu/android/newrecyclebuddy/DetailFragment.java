@@ -3,6 +3,8 @@ package edu.sjsu.android.newrecyclebuddy;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +18,7 @@ public class DetailFragment extends Fragment {
     private InfoTopic infoTopic;
     private TextView nameTextView;
     private TextView descriptionTextView;
-    private ImageView imageView;
+    private ImageView imageView, backArrow;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -44,9 +46,6 @@ public class DetailFragment extends Fragment {
         } else {
             Log.d("test", "Arguments are null");
         }
-//        if(argument != null){
-//            infoTopic = getArguments().getParcelable("argument_key");
-//        }
     }
 
     @Override
@@ -57,7 +56,9 @@ public class DetailFragment extends Fragment {
         nameTextView = view.findViewById(R.id.topic_name);
         descriptionTextView = view.findViewById(R.id.description);
         imageView = view.findViewById(R.id.image);
+        backArrow = view.findViewById(R.id.back_arrow);
 
+        backArrow.setOnClickListener(this::navigateToInfo);
 
         // Use infoTopic to set up your views in detail fragment
         if (infoTopic != null) {
@@ -71,5 +72,11 @@ public class DetailFragment extends Fragment {
         else{
             Log.d("test", "InfoTopic is still null in onCreateView");
         }
-        return view;}
+        return view;
+    }
+
+    private void navigateToInfo(View view) {
+        NavController controller = Navigation.findNavController(view);
+        controller.navigate(R.id.action_detailFragment_to_nav_info_hub);
+    }
 }

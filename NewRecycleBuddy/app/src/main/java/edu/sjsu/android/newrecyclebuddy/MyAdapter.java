@@ -2,6 +2,7 @@ package edu.sjsu.android.newrecyclebuddy;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,11 +43,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView nameView;
+//        public final TextView nameView;
+        public final Button nameView;
 
         public ViewHolder(RowLayoutBinding binding, OnInfoTopicClickedListener listener) {
             super(binding.getRoot());
             this.nameView = binding.name;
+            nameView.setFocusable(false);
+            nameView.setFocusableInTouchMode(false);
+            nameView.setClickable(false);
             binding.getRoot().setOnClickListener(v -> listener.onClick(getLayoutPosition())); // call onclick method and get position with layout position method
             // so adapter knows which row is being clicked based on position id
         }

@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_nav_home_to_openingFragment"
             app:destination="@id/openingFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_info_hub"
@@ -63,7 +66,11 @@
         android:id="@+id/nav_community"
         android:name="edu.sjsu.android.newrecyclebuddy.CommunityFragment"
         android:label="fragment_community"
-        tools:layout="@layout/fragment_community" />
+        tools:layout="@layout/fragment_community" >
+        <action
+            android:id="@+id/action_nav_community_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_scan"
         android:name="edu.sjsu.android.newrecyclebuddy.ScanFragment"
@@ -73,7 +80,11 @@
         android:id="@+id/detailFragment"
         android:name="edu.sjsu.android.newrecyclebuddy.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_nav_info_hub"
+            app:destination="@id/nav_info_hub" />
+    </fragment>
 
 </navigation>
 
