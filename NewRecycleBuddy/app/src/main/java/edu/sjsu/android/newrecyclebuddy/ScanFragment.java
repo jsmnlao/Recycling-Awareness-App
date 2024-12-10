@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.media.Image;
@@ -35,6 +36,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -43,6 +47,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -195,6 +203,10 @@ public class ScanFragment extends Fragment {
                         String prediction = result.replaceAll(".*\"prediction\":\\s*(true|false).*", "$1");
                         Log.d("test", "Category is: " + category);
                         Log.d("test", "Prediction is: " + prediction);
+                        //increment category count in database
+                        if(prediction.contains("true")) {
+                            incrementCategoryCount(category);
+                        }
 
                         String predictionStatus = prediction.contains("true") ? "Yes!" : "No!";
 
@@ -331,4 +343,50 @@ public class ScanFragment extends Fragment {
             }
         }
     }
+
+    public void incrementCategoryCount(String category) {
+        // Validate the category
+        List<String> validCategories = Arrays.asList("plastic", "cardboard", "glass", "metal", "paper", "trash");
+        if (!validCategories.contains(category)) {
+            Log.e("Category", "Invalid category: " + category);
+            return;
+        }
+
+        if (category.equals("trash")) {
+            Log.e("Category", "Trash: not incremented");
+            return;
+        }
+
+        // Retrieve the current user's email from SharedPreferences
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        String email = sharedPreferences.getString("userEmail", null);
+
+        if (email == null) {
+            Log.e("SharedPreferences", "No user email found in SharedPreferences.");
+            return;
+        }
+
+        // Access Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        // Fetch the user's document
+        db.collection("users").document(email)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        // Update the user's document
+                        Map<String, Object> updates = new HashMap<>();
+                        updates.put(category + "_count", FieldValue.increment(1));
+
+                        db.collection("users").document(email)
+                                .update(updates)
+                                .addOnSuccessListener(aVoid -> Log.d("Firestore", "Successfully incremented " + category + "_count for user: " + email))
+                                .addOnFailureListener(e -> Log.e("Firestore", "Error updating " + category + "_count: " + e.getMessage()));
+                    } else {
+                        Log.e("Firestore", "User document not found for email: " + email);
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user document: " + e.getMessage()));
+    }
+
 }
