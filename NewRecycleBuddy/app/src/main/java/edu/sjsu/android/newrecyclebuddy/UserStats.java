@@ -2,7 +2,8 @@ package edu.sjsu.android.newrecyclebuddy;
 
 public class UserStats {
 
-    private String name;
+    private String Name;
+    private String Email;
     private int plastic_count;
     private int metal_count;
     private int glass_count;
@@ -14,7 +15,7 @@ public class UserStats {
     public UserStats() {
     }
     public UserStats(String name, int plastic_count, int metal_count, int glass_count, int cardboard_count, int paper_count) {
-        this.name = name;
+        this.Name = name;
         this.plastic_count = plastic_count;
         this.metal_count = metal_count;
         this.glass_count = glass_count;
@@ -23,13 +24,18 @@ public class UserStats {
     }
 
     public UserStats(String name, int total) {
-        this.name = name;
+        this.Name = name;
         this.total = total;
     }
 
     public String getName(){
-        return name;
+        return Name;
     }
+
+    public String getEmail() {
+        return Email;
+    }
+
     public int getPlastic_count() {
         return plastic_count;
     }

@@ -29,6 +29,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+
+//import edu.sjsu.android.newrecyclebuddy.retrofit.AppUserApi;
+//import edu.sjsu.android.newrecyclebuddy.retrofit.RetrofitService;
+//import edu.sjsu.android.newrecyclebuddy.springmodels.AppUser;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+
 public class SignupFragment extends Fragment {
 
     public SignupFragment() {
@@ -95,11 +105,28 @@ public class SignupFragment extends Fragment {
                                 user.put("Password", password); // Consider hashing passwords in production
                                 user.put("Registration", OffsetDateTime.now());
 
+                                Map<String, Object> userStats = new HashMap<>();
+                                userStats.put("Name", name);
+                                userStats.put("Email", email);
+                                userStats.put("cardboard_count", 0);
+                                userStats.put("glass_count", 0);
+                                userStats.put("metal_count", 0);
+                                userStats.put("paper_count", 0);
+                                userStats.put("plastic_count", 0);
+
+                                db.collection("users")
+                                        .document(email)
+                                        .set(userStats)
+                                        .addOnSuccessListener(aVoid -> {
+                                            Log.d(TAG, "UserStats DocumentSnapshot successfully written!");
+                                        })
+                                        .addOnFailureListener(e -> Log.w(TAG, "Error writing document", e));
+
                                 db.collection("userbase")
                                         .document(email)
                                         .set(user)
                                         .addOnSuccessListener(aVoid -> {
-                                            Log.d(TAG, "DocumentSnapshot successfully written!");
+                                            Log.d(TAG, "User DocumentSnapshot successfully written!");
                                             Toast.makeText(requireContext(), "Sign up successful! Hi, " + user.get("Name") + ".", Toast.LENGTH_SHORT).show();
                                             NavController navController = Navigation.findNavController(v);
                                             navController.navigate(R.id.action_signupFragment_to_loginFragment);
