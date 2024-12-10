@@ -53,9 +53,10 @@ public class CommunityFragment extends Fragment {
         logoutButton = view.findViewById(R.id.logout_text);
         logoutButton.setOnClickListener(this::logout);
 
-        fetchAndDisplayUserName();
-        fetchAndDisplayTopUsers(view);
+         
 
+
+        fetchAndDisplayUserName();
         return view;
 
     }
@@ -133,6 +134,28 @@ public class CommunityFragment extends Fragment {
             // Set total score
             TextView scoreTextView = rootView.findViewById(scoreIds[i]);
             scoreTextView.setText(String.valueOf(user.getTotal()));
+        }
+    }
+
+    // update home page name to current user's name
+    public void fetchAndDisplayUserName() {
+        SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        String email = sharedPreferences.getString("userEmail", null);
+
+        if (email != null) {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("userbase").document(email)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String name = documentSnapshot.getString("Name");
+                            TextView userNameTextView = getView().findViewById(R.id.user_name);
+                            if (userNameTextView != null) {
+                                userNameTextView.setText(name); // Update the UI with the latest data
+                            }
+                        }
+                    })
+                    .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user data: " + e.getMessage()));
         }
     }
 }
