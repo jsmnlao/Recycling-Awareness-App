@@ -3,6 +3,7 @@ package edu.sjsu.android.newrecyclebuddy;
 import static android.app.Activity.RESULT_OK;
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
@@ -184,10 +185,33 @@ public class ScanFragment extends Fragment {
                 Log.d("test", "Response received");
 //                analysisResult.setText(response.body().string());
                 if (response.isSuccessful() && response.body() != null) {
-                    final String result = response.body().string();
+                    String result = response.body().string();
                     Log.d("test", "Response: " + result);
                     if (getActivity() != null) {
-                        getActivity().runOnUiThread(() -> analysisResult.setText(result));
+//                        getActivity().runOnUiThread(() -> analysisResult.setText(result)); // sets result to output from model
+                        result = result.replace("'", "\"");
+
+                        String category = result.replaceAll(".*\"category\":\\s*\"([^\"]+)\".*", "$1");
+                        String prediction = result.replaceAll(".*\"prediction\":\\s*(true|false).*", "$1");
+                        Log.d("test", "Category is: " + category);
+                        Log.d("test", "Prediction is: " + prediction);
+                        getActivity().runOnUiThread(() -> {
+                            analysisResult.setText("Is this item recyclable? --> " + prediction);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                            builder.setTitle("Your Prediction Result...");
+                            String dialogText = prediction;
+                            if(prediction.equals("true")){
+                                dialogText += "\n Congrats! Your item is recyclable!";
+                                builder.setPositiveButton("YAY", (dialog, which) -> dialog.dismiss());
+                            }
+                            else{
+                                dialogText += "\n Your item is NOT recyclable!";
+                                builder.setPositiveButton("TRY AGAIN", (dialog, which) -> dialog.dismiss());
+                            }
+                            builder.setMessage("Prediction: " + dialogText);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        });
                     }
                 } else {
                     Log.e("test", "Invalid response");
@@ -208,14 +232,10 @@ public class ScanFragment extends Fragment {
         OutputStream outputStream = null;
 
         try {
-            // Get the InputStream from the URI
             inputStream = getContext().getContentResolver().openInputStream(uri);
 
             if (inputStream != null) {
-                // Create a temporary file in the app's private cache directory
                 file = new File(getContext().getCacheDir(), "uploaded_image.jpg");
-
-                // Write the InputStream to the temporary file
                 outputStream = new FileOutputStream(file);
 
                 byte[] buffer = new byte[1024];
@@ -229,7 +249,6 @@ public class ScanFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            // Close streams
             try {
                 if (inputStream != null) {
                     inputStream.close();
