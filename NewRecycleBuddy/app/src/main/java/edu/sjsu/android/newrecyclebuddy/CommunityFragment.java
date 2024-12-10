@@ -81,6 +81,26 @@ public class CommunityFragment extends Fragment {
                         }
                     })
                     .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user data: " + e.getMessage()));
+
+                    db.collection("users").document(email)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            UserStats userStats = documentSnapshot.toObject(UserStats.class);
+                            if (userStats != null) {
+                                // Use the userStats object as needed
+                                int total = userStats.getPlastic_count() +
+                                        userStats.getPaper_count() +
+                                        userStats.getMetal_count() +
+                                        userStats.getGlass_count() +
+                                        userStats.getCardboard_count();
+                                // Proceed with using the 'total' variable
+                                TextView userScoreTextView = getView().findViewById(R.id.user_score);
+                                userScoreTextView.setText(String.valueOf(total));
+                            }
+                        }
+                    })
+                    .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user data: " + e.getMessage()));
         }
     }
 
