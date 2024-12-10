@@ -29,13 +29,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import edu.sjsu.android.newrecyclebuddy.retrofit.AppUserApi;
-import edu.sjsu.android.newrecyclebuddy.retrofit.RetrofitService;
-import edu.sjsu.android.newrecyclebuddy.springmodels.AppUser;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class SignupFragment extends Fragment {
 
     public SignupFragment() {
