@@ -53,10 +53,8 @@ public class CommunityFragment extends Fragment {
         logoutButton = view.findViewById(R.id.logout_text);
         logoutButton.setOnClickListener(this::logout);
 
-         
-
-
         fetchAndDisplayUserName();
+        fetchAndDisplayTopUsers(view);
         return view;
 
     }
@@ -137,6 +135,7 @@ public class CommunityFragment extends Fragment {
         }
     }
 
+    /*
     // update home page name to current user's name
     public void fetchAndDisplayUserName() {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
@@ -158,4 +157,6 @@ public class CommunityFragment extends Fragment {
                     .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user data: " + e.getMessage()));
         }
     }
+
+     */
 }

@@ -54,9 +54,6 @@ public class HomeFragment extends Fragment {
         // Fetch the current user's name
         // Access SharedPreferences to retrieve user details
         fetchAndDisplayUserName();
-
-//        logoutText.setOnClickListener(this::logout);
-
         fetchAndDisplayUserStats(view);
         return view;
     }

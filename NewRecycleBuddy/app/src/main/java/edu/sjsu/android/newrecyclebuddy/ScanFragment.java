@@ -205,7 +205,9 @@ public class ScanFragment extends Fragment {
                         Log.d("test", "Prediction is: " + prediction);
                         //increment category count in database
                         if(prediction.contains("true")) {
+                            Log.d("test", "Incrementing category count...");
                             incrementCategoryCount(category);
+                            Log.d("test", "Incremented category count");
                         }
 
                         String predictionStatus = prediction.contains("true") ? "Yes!" : "No!";
@@ -345,15 +347,17 @@ public class ScanFragment extends Fragment {
     }
 
     public void incrementCategoryCount(String category) {
+        Log.d("test", "from increment, category string is: " + category);
         // Validate the category
+        String cleanCategory = category.strip();
         List<String> validCategories = Arrays.asList("plastic", "cardboard", "glass", "metal", "paper", "trash");
-        if (!validCategories.contains(category)) {
-            Log.e("Category", "Invalid category: " + category);
+        if (!validCategories.contains(cleanCategory)) {
+            Log.e("test", "Invalid category: " + cleanCategory);
             return;
         }
 
-        if (category.equals("trash")) {
-            Log.e("Category", "Trash: not incremented");
+        if (cleanCategory.equals("trash")) {
+            Log.e("test", "Trash: not incremented");
             return;
         }
 
@@ -362,7 +366,7 @@ public class ScanFragment extends Fragment {
         String email = sharedPreferences.getString("userEmail", null);
 
         if (email == null) {
-            Log.e("SharedPreferences", "No user email found in SharedPreferences.");
+            Log.e("test", "No user email found in SharedPreferences.");
             return;
         }
 
@@ -376,17 +380,17 @@ public class ScanFragment extends Fragment {
                     if (documentSnapshot.exists()) {
                         // Update the user's document
                         Map<String, Object> updates = new HashMap<>();
-                        updates.put(category + "_count", FieldValue.increment(1));
+                        updates.put(cleanCategory + "_count", FieldValue.increment(1));
 
                         db.collection("users").document(email)
                                 .update(updates)
-                                .addOnSuccessListener(aVoid -> Log.d("Firestore", "Successfully incremented " + category + "_count for user: " + email))
-                                .addOnFailureListener(e -> Log.e("Firestore", "Error updating " + category + "_count: " + e.getMessage()));
+                                .addOnSuccessListener(aVoid -> Log.d("test", "Successfully incremented " + category + "_count for user: " + email))
+                                .addOnFailureListener(e -> Log.e("test", "Error updating " + category + "_count: " + e.getMessage()));
                     } else {
-                        Log.e("Firestore", "User document not found for email: " + email);
+                        Log.e("test", "User document not found for email: " + email);
                     }
                 })
-                .addOnFailureListener(e -> Log.e("Firestore", "Error fetching user document: " + e.getMessage()));
+                .addOnFailureListener(e -> Log.e("test", "Error fetching user document: " + e.getMessage()));
     }
 
 }
