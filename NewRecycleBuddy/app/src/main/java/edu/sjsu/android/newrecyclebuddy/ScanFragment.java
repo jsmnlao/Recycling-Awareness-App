@@ -195,12 +195,15 @@ public class ScanFragment extends Fragment {
                         String prediction = result.replaceAll(".*\"prediction\":\\s*(true|false).*", "$1");
                         Log.d("test", "Category is: " + category);
                         Log.d("test", "Prediction is: " + prediction);
+
+                        String predictionStatus = prediction.contains("true") ? "Yes!" : "No!";
+
                         getActivity().runOnUiThread(() -> {
-                            analysisResult.setText("Is this item recyclable? --> " + prediction);
+                            analysisResult.setText("Is this item recyclable? --> " + predictionStatus);
                             AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
                             builder.setTitle("Your Prediction Result...");
                             String dialogText = prediction;
-                            if(prediction.equals("true")){
+                            if(prediction.contains("true")){
                                 dialogText += "\n Congrats! Your item is recyclable!";
                                 builder.setPositiveButton("YAY", (dialog, which) -> dialog.dismiss());
                             }
