@@ -24,7 +24,7 @@ The goal of our software engineering project is to design and create a mobile ap
 `curl -X POST -F "file=@<path_to_input_image>" http://<your_local_host_port>/predict` 
 
 ## Future Improvements
-- Gamification of ap: gamifying users’ recycling habits to engage users (ie. virtual pet or plant)
+- Gamification of app: gamifying users’ recycling habits to engage users (ie. virtual pet or plant)
 - Option to use user's camera on device instead of uploading image
 - Security enhancements
 - More fine-tuning of our CNN model
