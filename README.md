@@ -17,6 +17,21 @@ The goal of our software engineering project is to design and create a mobile ap
 - RecycleBuddy Demo ([Demo Video](https://drive.google.com/file/d/1Axony9j9GcQi8Hl3I7GrOsCf1GMqbuHy/view?usp=sharing))
 - RecycleBuddy Presentation Slides ([Google Slides](https://docs.google.com/presentation/d/1JuOf18wc9TMTADYkoSvlDyYVgzzddiiCezXr5GLPXmM/edit?usp=sharing))
 
+## Tech Stacks
+- Java: Our Android backend. 
+  - Object-oriented code is easier to understand and maintain.
+
+- Python: ML backend. 
+  - Flexible ML libraries = straightforward data processing
+  - Run on GPU = excellent performance
+
+- Firebase: Cloud-hosted database system.
+  - Access from any machine
+  - Scalable
+
+## Our Key Milestones
+![image](https://github.com/user-attachments/assets/0016f305-7d27-40db-95a8-675dd61c2d3c)
+
 ## How to Run Backend Flask API
 1. Open Anaconda.Navigator and start base (root) to open with Jupyter Notebook
 2. Navigate to Recycling_Predictor.ipynb and run all cells
